@@ -25,7 +25,7 @@ class ArrayHelper {
    * @return string
    */
   public static function get_attribute_string(array $attributes, array $defaults = []) {
-    $data       = static::merge_custom_data($defaults, $attributes);
+    $data       = array_merge($defaults, $attributes);
     $http_query = http_build_query($data, '', '&amp;', PHP_QUERY_RFC3986); // spaces are %20 encoded.
 
     // Remove URL encoding.

@@ -104,7 +104,7 @@ class StringHelperTest extends TestCase {
    * @return array
    */
   public function dataprovider__bleach_string() {
-    $bad_string_array = json_decode(file_get_contents((dirname(dirname(__DIR__)) . '/bad_strings.json')), true);
+    $bad_string_array = json_decode(file_get_contents((dirname(__DIR__) . '/bad_strings.json')), true);
 
     return [$bad_string_array];
   }

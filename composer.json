@@ -2,7 +2,6 @@
   "name": "CLSimplex/Helpers",
   "description": "",
   "keywords": [],
-  "repositories": [ { "type": "vcs", "url": "https://github.com/clsimplex/tuxedo-helpers.git" } ],
   "support": {
     "email": "info@clsimplex.com"
   },

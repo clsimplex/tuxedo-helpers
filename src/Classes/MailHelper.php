@@ -88,14 +88,14 @@ class MailHelper {
    * 3. Remove unsubscribed addresses.
    *
    * @since  0.0.1
-   * @param  String[]|string $to          string or array
-   * @param  String[]|string $cc          string or array
-   * @param  String[]|string $bcc         string or array
-   * @param  String[]        $unsubcribes array of emails
-   * @param  mixed           $to_list
-   * @param  mixed           $cc_list
-   * @param  mixed           $bcc_list
-   * @return array           containing three arrays
+   * @param  array $to
+   * @param  array $cc
+   * @param  array $bcc
+   * @param  array $unsubcribes
+   * @param  mixed $to_list
+   * @param  mixed $cc_list
+   * @param  mixed $bcc_list
+   * @return array
    */
   public static function get_mailing_list($to_list, $cc_list, $bcc_list, array $unsubscribes = []) {
 
@@ -120,14 +120,14 @@ class MailHelper {
    * Sometimes you just want a flat list. Sometimes you just want to BCC everyone.
    *
    * @since  0.0.1
-   * @param  string[]|string $to          string or array
-   * @param  string[]|string $cc          string or array
-   * @param  string[]|string $bcc         string or array
-   * @param  string[]        $unsubcribes array of emails
-   * @param  mixed           $to_list
-   * @param  mixed           $cc_list
-   * @param  mixed           $bcc_list
-   * @return string[]
+   * @param  mixed $to
+   * @param  mixed $cc
+   * @param  mixed $bcc
+   * @param  mixed $unsubcribes
+   * @param  mixed $to_list
+   * @param  mixed $cc_list
+   * @param  mixed $bcc_list
+   * @return array
    */
   public static function get_flat_mailing_list($to_list, $cc_list, $bcc_list, array $unsubscribes = []) {
     $array_to  = static::mixed_to_list($to_list);
@@ -144,6 +144,7 @@ class MailHelper {
    *
    * @since  0.0.1
    * @param  string $email
+   * @param  bool   $mailgun_check
    * @return bool
    */
   public static function is_valid_email(string $email, bool $mailgun_check = false) {

@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<phpunit bootstrap="vendor/autoload.php"
+	 colors="true"
+	 convertErrorsToExceptions="true"
+   convertNoticesToExceptions="true"
+   convertWarningsToExceptions="true"
+   stopOnError="false"
+	 stopOnFailure="false"
+   syntaxCheck="true"
+>
+<testsuites>
+  <testsuite name="bugs">
+    <directory suffix="Test.php">./tests/bugs</directory>
+  </testsuite>
+  <testsuite name="unit">
+    <directory suffix="Test.php">./tests/unit</directory>
+  </testsuite>
+</testsuites>
+<filter>
+  <whitelist>
+    <directory suffix=".php">src/</directory>
+  </whitelist>
+</filter>
+<php>
+  <env name="APP_ENV"        value="testing"/>
+  <env name="TEST_PAID_API"  value="false"/>
+  <env name="MAILGUN_PUBLIC" value="pubkey-088679a52dc768875cc8393f46218e37"/>
+</php>
+</phpunit>

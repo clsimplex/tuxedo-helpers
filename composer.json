@@ -1,0 +1,54 @@
+{
+  "name": "CLSimplex/Tuxedo/Helpers",
+  "description": "",
+  "keywords": [],
+  "repositories": [ { "type": "vcs", "url": "https://github.com/clsimplex/tuxedo-helpers.git" } ],
+  "support": {
+    "email": "info@clsimplex.com"
+  },
+  "license": "proprietary",
+  "homepage": "https://clsimplex.com",
+  "authors": [
+    {
+      "name": "Levon Zadravec-Powell",
+      "homepage": "https://clsimplex.com",
+      "email": "levon@clsimplex.com"
+    },
+    {
+      "name": "Charles Moolin",
+      "homepage": "https://clsimplex.com",
+      "email": "charles@clsimplex.com"
+    }
+  ],
+  "prefer-stable": true,
+  "minimum-stability": "stable",
+  "require": {
+    "laravel/framework": "~5.4.30"
+  },
+  "require-dev": {
+    "php": ">=5.6.4",
+    "laravel/framework": "~5.4.30",
+    "phpunit/phpunit": "~6.1",
+    "illuminate/support": "~5",
+    "phpmd/phpmd": "~2.6.0"
+  },
+  "autoload": {
+    "psr-4": {
+      "CLSimplex\\Tuxedo\\Helpers\\": "src/"
+    }
+  },
+  "autoload-dev": {
+    "psr-4": {
+      "CLSimplex\\Tuxedo\\Helpers\\": "src/",
+      "CLSimplex\\Tuxedo\\Helpers\\tests\\": "/tests"
+    }
+  },
+  "config": {
+    "sort-packages": true,
+    "process-timeout": 120,
+    "optimize-autoloader": true,
+    "github-oauth": {
+      "github.com": "6630db691d0eda5dad884b080e09206a0f82ab94"
+    }
+  }
+}

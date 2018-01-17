@@ -27,7 +27,7 @@ class MailHelper {
    * @param  string $email
    * @return array
    */
-  public static function get_unsubscription_info( string $email ) {
+  public static function get_unsubscription_info(string $email) {
     return [
       'email' => $email,
       'hash'  => hash('md5', 'unsubscribed_secret_string' . $email . config('app.name'))
@@ -43,7 +43,7 @@ class MailHelper {
    * @param  string $hash
    * @return bool
    */
-  public static function is_valid_unsubscribe( string $email, string $hash ) {
+  public static function is_valid_unsubscribe(string $email, string $hash) {
     if ( ! static::is_valid_email($email) ) {
       return false;
     }
@@ -129,7 +129,7 @@ class MailHelper {
    * @param  mixed           $bcc_list
    * @return string[]
    */
-  public static function get_flat_mailing_list( $to_list, $cc_list, $bcc_list, array $unsubscribes = [] ) {
+  public static function get_flat_mailing_list($to_list, $cc_list, $bcc_list, array $unsubscribes = []) {
     $array_to  = static::mixed_to_list($to_list);
     $array_cc  = static::mixed_to_list($cc_list);
     $array_bcc = static::mixed_to_list($bcc_list);

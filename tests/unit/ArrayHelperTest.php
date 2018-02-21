@@ -30,7 +30,13 @@ class ArrayHelperTest extends TestCase {
       'space case'       => [['placeholder' => 'placeholder value'], [], 'placeholder="placeholder value"'],
       'all cases'        => [['placeholder' => 'placeholder value', 'id' => 'id-one', 'class' => 'class-one'], ['class' => 'default'], 'class="class-one" placeholder="placeholder value" id="id-one"'],
       'http encoding'    => [['action' => 'http://website.com'], [], 'action="http://website.com"'],
-      'http encoding brackets' => [['placeholder' => 'This value (that value)'], [], 'placeholder="This value (that value)"']
+      'http encoding brackets' => [['placeholder' => 'This value (that value)'], [], 'placeholder="This value (that value)"'],
+      'form create bug'  => [[
+        'action' => 'http://site.test/admin/files?parent_id=6',
+        'name'   => 'form',
+        'role'   => 'form',
+        'target' => '_top'
+      ], [], 'action="http://site.test/admin/files?parent_id=6" name="form" role="form" target="_top"'],
     ];
   }
 

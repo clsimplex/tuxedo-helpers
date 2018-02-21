@@ -14,9 +14,8 @@ class ArrayHelper {
    * As part of the move toward unifying the components
    * we can use this as another testable unit.
    *
-   * If we add quotes here, the browser will add a second set
-   * ruining errythang.
-   *
+   * @since  0.0.2 Fixed bug where a URL was one of the values.
+   *               Reimplemented.
    * @since  0.0.1
    * @link   http://php.net/http_build_query
    * @link   http://php.net/manual/en/function.str-pad.php
@@ -25,18 +24,14 @@ class ArrayHelper {
    * @return string
    */
   public static function get_attribute_string(array $attributes, array $defaults = []) {
-    $data       = array_merge($defaults, $attributes);
-    $http_query = http_build_query($data, '', '&amp;', PHP_QUERY_RFC3986); // spaces are %20 encoded.
+    $data   = array_merge($defaults, $attributes);
+    $result = [];
 
-    // Remove URL encoding.
-    $unencoded_string = urldecode($http_query);
-    $quote_update     = str_replace(['=', '&amp;'], ['="', '" '], $unencoded_string);
-
-    if ( ! empty($quote_update) ) {
-      $quote_update .= '"';
+    foreach ( $data as $attribute => $value ) {
+      $result []= $attribute . '="' . $value . '"';
     }
 
-    return $quote_update;
+    return implode(' ', $result);
   }
 
   /**

@@ -1,11 +1,11 @@
 <?php
 
-namespace CLSimplex\Tuxedo\Helpers\Classes;
+namespace CLSimplex\Tuxedo\Helpers;
 
 use Mailgun\Mailgun;
 
 use Illuminate\Support\Facades\Validator;
-use CLSimplex\Tuxedo\Helpers\Classes\ArrayHelper;
+use CLSimplex\Tuxedo\Helpers\ArrayHelper;
 
 /**
  * Theses are the helper functions for anything to do with Mail.

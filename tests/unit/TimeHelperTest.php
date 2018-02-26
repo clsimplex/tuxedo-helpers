@@ -4,7 +4,7 @@ namespace CLSimplex\Tuxedo\Helpers\tests\unit;
 
 error_reporting(E_ALL);
 
-use CLSimplex\Tuxedo\Helpers\Classes\TimeHelper;
+use CLSimplex\Tuxedo\Helpers\TimeHelper;
 use PHPUnit\Framework\TestCase;
 
 /**

@@ -1,6 +1,6 @@
 <?php
 
-namespace CLSimplex\Tuxedo\Helpers\Classes;
+namespace CLSimplex\Tuxedo\Helpers;
 
 /**
  * These are functions that help us manipulate arrays.

@@ -4,7 +4,7 @@ namespace CLSimplex\Tuxedo\Helpers\tests\unit;
 
 error_reporting(E_ALL);
 
-use CLSimplex\Tuxedo\Helpers\Classes\ArrayHelper;
+use CLSimplex\Tuxedo\Helpers\ArrayHelper;
 use PHPUnit\Framework\TestCase;
 
 /**

@@ -1,6 +1,6 @@
 <?php
 
-namespace CLSimplex\Tuxedo\Helpers\Classes;
+namespace CLSimplex\Tuxedo\Helpers;
 
 /**
  * @author Levon Zadravec-Powell levon@clsimplex.com

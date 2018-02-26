@@ -6,6 +6,8 @@ use Illuminate\Support\Facades\Gate;
 use Illuminate\Support\ServiceProvider;
 
 /**
+ * This does nothing fancy, as you can likely tell...
+ *
  * @author Levon Zadravec-Powell levon@clsimplex.com
  * @since  0.0.1
  */

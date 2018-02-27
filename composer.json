@@ -33,12 +33,12 @@
   },
   "autoload": {
     "psr-4": {
-      "CLSimplex\\Tuxedo\\Helpers\\": "src/"
+      "CLSimplex\\Tuxedo\\Helpers\\": "src/Classes/"
     }
   },
   "autoload-dev": {
     "psr-4": {
-      "CLSimplex\\Tuxedo\\Helpers\\": "src/",
+      "CLSimplex\\Tuxedo\\Helpers\\": "src/Classes/",
       "CLSimplex\\Tuxedo\\Helpers\\tests\\": "/tests"
     }
   },

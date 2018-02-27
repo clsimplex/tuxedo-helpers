@@ -4,7 +4,7 @@ namespace CLSimplex\Tuxedo\Helpers\tests\unit;
 
 error_reporting(E_ALL);
 
-use CLSimplex\Tuxedo\Helpers\Classes\MailHelper;
+use CLSimplex\Tuxedo\Helpers\MailHelper;
 use PHPUnit\Framework\TestCase;
 
 /**

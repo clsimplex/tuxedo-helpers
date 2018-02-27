@@ -4,7 +4,7 @@ namespace CLSimplex\Tuxedo\Helpers\tests\unit;
 
 error_reporting(E_ALL);
 
-use CLSimplex\Tuxedo\Helpers\Classes\StringHelper;
+use CLSimplex\Tuxedo\Helpers\StringHelper;
 use PHPUnit\Framework\TestCase;
 
 /**

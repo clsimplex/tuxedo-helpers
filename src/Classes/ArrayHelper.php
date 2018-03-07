@@ -28,7 +28,7 @@ class ArrayHelper {
     $result = [];
 
     foreach ( $data as $attribute => $value ) {
-      $result []= $attribute . '="' . $value . '"';
+      $result[] = $attribute . '="' . $value . '"';
     }
 
     return implode(' ', $result);

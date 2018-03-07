@@ -8,12 +8,16 @@ use Illuminate\Support\Facades\Storage;
  * StorageHelper is an attempt to provide additional
  * helpers that can be moved outside of Monocle.
  *
+ * The Storage Facade is part of the laravel framework.
+ * Nothing in here is testable outside of integration.
+ *
  * @author Levon Zadravec-Powell levon@clsimplex.com
- * @since  x.x.x
+ * @since  0.1.0
+ * @codeCoverageIgnore
  */
 class StorageHelper {
   /**
-   * @since  x.x.x
+   * @since  0.1.0
    * @codeCoverageIgnore
    * @param  string $file_name
    * @return bool
@@ -23,7 +27,7 @@ class StorageHelper {
   }
 
   /**
-   * @since  x.x.x
+   * @since  0.1.0
    * @codeCoverageIgnore
    * @param  string $file_name
    * @param  mixed  $contents
@@ -36,7 +40,7 @@ class StorageHelper {
   /**
    * Silent failure pattern.
    *
-   * @since  x.x.x
+   * @since  0.1.0
    * @codeCoverageIgnore
    * @param  string $file_name
    * @return void
@@ -53,7 +57,7 @@ class StorageHelper {
    * So in general, call this only if you plan on using the
    * file you just created.
    *
-   * @since  x.x.x
+   * @since  0.1.0
    * @codeCoverageIgnore
    * @param  string $file_name
    * @return string
@@ -67,7 +71,7 @@ class StorageHelper {
   }
 
   /**
-   * @since  x.x.x
+   * @since  0.1.0
    * @codeCoverageIgnore
    * @param  string $file_name
    * @return string

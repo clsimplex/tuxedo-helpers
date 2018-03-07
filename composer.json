@@ -1,6 +1,6 @@
 {
-  "name": "CLSimplex/Tuxedo/Helpers",
-  "description": "",
+  "name": "CLSimplex/Helpers",
+  "description": "Collection of simple helper functions",
   "keywords": [],
   "support": {
     "email": "info@clsimplex.com"

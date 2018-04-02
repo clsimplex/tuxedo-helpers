@@ -9,11 +9,11 @@ use PHPUnit\Framework\TestCase;
 
 /**
  * @author Levon Zadravec-Powell levon@clsimplex.com
- * @since  x.x.x
+ * @since  1.0.0
  */
 class SpamHelperTest extends TestCase {
   /**
-   * @since  x.x.x
+   * @since  1.0.0
    * @see    SpamHelperTest::test_get_keyword_score
    * @return array
    */
@@ -27,7 +27,7 @@ class SpamHelperTest extends TestCase {
   }
 
   /**
-   * @since  x.x.x
+   * @since  1.0.0
    * @see    SpamHelperTest::test_has_html_tags
    * @return array
    */
@@ -41,7 +41,7 @@ class SpamHelperTest extends TestCase {
   }
 
   /**
-   * @since  x.x.x
+   * @since  1.0.0
    * @see    SpamHelperTest::test_is_email_blacklisted
    * @return array
    */
@@ -56,7 +56,7 @@ class SpamHelperTest extends TestCase {
   }
 
   /**
-   * @since  x.x.x
+   * @since  1.0.0
    * @dataProvider dataprovider__get_keyword_score
    * @covers SpamHelper::get_keyword_score
    * @group  helpers
@@ -71,7 +71,7 @@ class SpamHelperTest extends TestCase {
   }
 
   /**
-   * @since  x.x.x
+   * @since  1.0.0
    * @dataProvider dataprovider__has_html_tags
    * @covers SpamHelper::has_html_tags
    * @group  helpers
@@ -86,7 +86,7 @@ class SpamHelperTest extends TestCase {
   }
 
   /**
-   * @since  x.x.x
+   * @since  1.0.0
    * @dataProvider dataprovider__is_email_blacklisted
    * @covers SpamHelper::is_email_blacklisted
    * @group  helpers

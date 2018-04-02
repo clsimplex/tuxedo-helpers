@@ -4,7 +4,7 @@ namespace CLSimplex\Tuxedo\Helpers;
 
 /**
  * @author Levon Zadravec-Powell levon@clsimplex.com
- * @since  x.x.x
+ * @since  1.0.0
  */
 class SpamHelper {
 
@@ -16,6 +16,8 @@ class SpamHelper {
    * Do not spend a lot of time on this. Merely a simple
    * catch for the time being.
    *
+   * @author Levon Zadravec-Powell levon@clsimplex.com
+   * @since  1.0.0
    * @param  string $message
    * @return int
    */
@@ -47,7 +49,8 @@ class SpamHelper {
   }
 
   /**
-   * @since  x.x.x
+   * @author Levon Zadravec-Powell levon@clsimplex.com
+   * @since  1.0.0
    * @see    http://php.net/manual/en/function.stripos.php
    * @param  string $domain
    * @return bool

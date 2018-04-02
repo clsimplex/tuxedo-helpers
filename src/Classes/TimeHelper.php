@@ -103,29 +103,45 @@ class TimeHelper {
    * Night is the fall-through amount since
    * it falls on both sides of 12.
    *
+   * @since  1.0.0 flipped logic. Moving into unit testable function.
    * @since  0.0.1
    * @return string
    */
   public static function get_phase_of_current_day() {
-    $carbon_today   = Carbon::today();
-    $carbon_now     = Carbon::now();
+    return static::get_phase_of_day(Carbon::now());
+  }
 
-    $morning__end   = Carbon::create($carbon_today->year, $carbon_today->month, $carbon_today->day, 12,  0, 0);
-    $afternoon__end = Carbon::create($carbon_today->year, $carbon_today->month, $carbon_today->day, 17,  0, 0);
-    $evening__end   = Carbon::create($carbon_today->year, $carbon_today->month, $carbon_today->day, 21,  0, 0);
+  /**
+   * Testable and reusuable unit.
+   * Given a carbon instance,
+   * what "time" of day is it?
+   *
+   * - Morning
+   * - Afternoon
+   * - Evening
+   * - Night
+   *
+   * @since  1.0.0 moved core logic from get_phase_of_current_day.
+   * @param  Carbon\Carbon $moment the moment in question
+   * @return string
+   */
+  public static function get_phase_of_day(Carbon $moment) {
+    $morning__end   = Carbon::create($moment->year, $moment->month, $moment->day, 12,  0, 0);
+    $afternoon__end = Carbon::create($moment->year, $moment->month, $moment->day, 17,  0, 0);
+    $evening__end   = Carbon::create($moment->year, $moment->month, $moment->day, 21,  0, 0);
 
     $result = 'night';
 
-    if ( $carbon_now->lt($morning__end) ) {
-      $result = 'morning';
+    if ( $moment->lt($evening__end) ) {
+      $result = 'evening';
     }
 
-    if ( $carbon_now->lt($afternoon__end) ) {
+    if ( $moment->lt($afternoon__end) ) {
       $result = 'afternoon';
     }
 
-    if ( $carbon_now->lt($evening__end) ) {
-      $result = 'evening';
+    if ( $moment->lt($morning__end) ) {
+      $result = 'morning';
     }
 
     return $result;

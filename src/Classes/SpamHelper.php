@@ -8,6 +8,8 @@ namespace CLSimplex\Tuxedo\Helpers;
  */
 class SpamHelper {
 
+  const SCORE_THRESHOLD = 3;
+
   public static function has_html_tags(string $message) {
     return strip_tags($message) !== $message;
   }
@@ -40,7 +42,7 @@ class SpamHelper {
     $message = strtolower($message);
 
     foreach ( $keywords as $word => $word_score ) {
-      $occurances = substr_count( $message, $word );
+      $occurances = substr_count($message, $word);
 
       $score += $word_score * $occurances;
     }
@@ -69,5 +71,25 @@ class SpamHelper {
     }
 
     return false;
+  }
+
+  /**
+   * @since  1.0.0
+   * @param  string $email
+   * @param  string $message
+   * @return int
+   */
+  public static function get_spam_score(string $email, string $message) {
+    $base_score = 0.5; // No one is born innocent.
+
+    if ( static::is_email_blacklisted($email) ) {
+      $base_score += 5; // Game over!
+    }
+
+    if ( static::has_html_tags($message) ) {
+      $base_score += 2; // Heavily suspicious!
+    }
+
+    return $base_score + static::get_keyword_score($message);
   }
 }

@@ -4,6 +4,7 @@ namespace CLSimplex\Tuxedo\Helpers;
 
 /**
  * @author Levon Zadravec-Powell levon@clsimplex.com
+ * @since  1.1.0 updated get_keyword_score().
  * @since  1.0.0
  */
 class SpamHelper {
@@ -19,6 +20,7 @@ class SpamHelper {
    * catch for the time being.
    *
    * @author Levon Zadravec-Powell levon@clsimplex.com
+   * @since  1.1.0  Updated word list and scores.
    * @since  1.0.0
    * @param  string $message
    * @return int
@@ -27,16 +29,20 @@ class SpamHelper {
     $score = 0;
 
     $keywords = [
+      'traffic'    => 0.5,
+      'casino'     => 1,
+      'bitcoin'    => 1,
       'babes'      => 1,
-      'fuck'       => 1,
-      'sex'        => 1,
+      'fuck'       => 1.5,
+      'sex'        => 1.5,
       'porn'       => 2,
+      'seo'        => 2,
+      'milf'       => 2.5,
       'getropin'   => 3,
       'riptropin'  => 3,
       'viagra'     => 3,
       'hygetropin' => 3,
       'cialis'     => 3,
-      'milf'       => 2,
     ];
 
     $message = strtolower($message);
@@ -52,6 +58,8 @@ class SpamHelper {
 
   /**
    * @author Levon Zadravec-Powell levon@clsimplex.com
+   * @since  1.1.0 updated email domain list.
+   *               Blocking all russian email addresses.
    * @since  1.0.0
    * @see    http://php.net/manual/en/function.stripos.php
    * @param  string $domain
@@ -61,8 +69,12 @@ class SpamHelper {
     $domains = [
       'baburn', 'marvsz', 'zxcvbnmy', 'getabusinessfunded',
       'probusinessfunding', 'fastfundingadvisors',
-      'businessloansfundednow'
+      'businessloansfundednow', 'noreply', 'mobileyell',
     ];
+
+    if ( ends_with($email, '.ru') ) { // Block ALL russian emails.
+      return true;
+    }
 
     foreach ( $domains as $bad_domain ) {
       if ( stripos($email, $bad_domain) > 0 ) {

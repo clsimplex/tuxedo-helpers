@@ -70,7 +70,7 @@ class StringHelper {
    * @param  string $buffer_string
    * @return string
    */
-  public static function minify_string( string $buffer_string ) {
+  public static function minify_string(string $buffer_string) {
     $regex_replacement = [
       '/\>[^\S ]+/s' => '>',
       '/[^\S ]+\</s' => '<',
@@ -123,6 +123,7 @@ class StringHelper {
    * nature of the whole thing. Unintended replacements
    * can occur if subpatterns exist.
    *
+   * @TODO   parameter ordering unification
    * @since  0.0.1
    * @link   http://php.net/manual/en/function.str-replace.php
    * @link   http://php.net/manual/en/function.preg-replace.php

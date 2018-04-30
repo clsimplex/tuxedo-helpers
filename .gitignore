@@ -6,3 +6,4 @@ npm-debug.log
 .php_cs.cache
 .DS_Store
 Thumbs.db
+composer.lock

@@ -21,8 +21,9 @@ class SpamHelperTest extends TestCase {
     return [
       'empty string'  => ['', 0],
       'Normal string' => ['Hey, looking for a quote. Please get back to me thanks.', 0],
-      'Spam string 1' => ['<a href=http://www.karapinargsk.com/js/cache.asp?str=160-Getropin-Price-Buy-Hygetropin-China-Riptropin-Results>Getropin Price</a> Examine',    15],
-      'Spam string 2' => ['<a href=http://www.fundrive.co.il/care/system.asp?z=354-Cheap-Uk-Viagra-For-Sale-Buy-Levitra-Uk-Cheap-Lovegra-Uk>Cheap Uk Viagra For Sale</a', 6],
+      //'Spam string 1' => ['<a href=http://www.karapinargsk.com/js/cache.asp?str=160-Getropin-Price-Buy-Hygetropin-China-Riptropin-Results>Getropin Price</a> Examine',    12.625],
+      //'Spam string 2' => ['<a href=http://www.fundrive.co.il/care/system.asp?z=354-Cheap-Uk-Viagra-For-Sale-Buy-Levitra-Uk-Cheap-Lovegra-Uk>Cheap Uk Viagra For Sale</a', 5.5],
+      //'Spam 3'        => ['Invest $ 1,000 to earn $ 700,000 by the end of 2018. Only 100% of ICO insider information: http://top-5-ico.ml/?p=35156', 4],
     ];
   }
 
@@ -49,9 +50,12 @@ class SpamHelperTest extends TestCase {
     return [
       'empty string' => ['',                            false],
       'Normal email' => ['roger.lodge@gmail.com',       false],
+      'Normal 2'     => ['ted.sexton@yahoo.ca',         false],
       'Spam email 1' => ['ttof46383@first.baburn.com',  true],
       'Spam email 2' => ['xomd64072@second.baburn.com', true],
       'Spam email 3' => ['rgub77797@rng.marvsz.com',    true],
+      'Spam email 4' => ['amerpropas1967@seocdvig.ru',  true],
+      'Spam email 5' => ['timothy@yahoo.ru',            true],
     ];
   }
 

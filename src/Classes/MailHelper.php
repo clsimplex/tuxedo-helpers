@@ -2,8 +2,6 @@
 
 namespace CLSimplex\Tuxedo\Helpers;
 
-use Mailgun\Mailgun;
-
 use Illuminate\Support\Facades\Validator;
 use CLSimplex\Tuxedo\Helpers\ArrayHelper;
 
@@ -13,6 +11,7 @@ use CLSimplex\Tuxedo\Helpers\ArrayHelper;
  * that laravel provides is the mail module.
  *
  * @author Levon Zadravec-Powell levon@clsimplex.com
+ * @since  1.2.0 removing Mailgun features.
  * @since  0.0.1
  */
 class MailHelper {
@@ -142,6 +141,7 @@ class MailHelper {
   /**
    * Careful, this function can potentially cost us money.
    *
+   * @since  1.2.0  removing Mailgun validation checks.
    * @since  0.0.1
    * @param  string $email
    * @param  bool   $mailgun_check
@@ -152,8 +152,6 @@ class MailHelper {
       return false;
     }
 
-    $api_key = env('MAILGUN_PUBLIC'); // Use public key in testing so we can put it in repo.
-
     /*
      * If we're in production, we have access to
      * Laravel Validator.
@@ -162,19 +160,9 @@ class MailHelper {
      * If it's obviously a bad email, we reject it.
      */
     if ( env('APP_ENV') !== 'testing' ) {
-      $api_key   = config('services.mailgun.private');
       $validator = Validator::make(['email' => $email], ['email' => 'required|email|min:5|max:254']);
 
-      if ( $validator->fails() ) {
-        return false;
-      }
-    }
-
-    if ( $mailgun_check ) {
-      $mailgun  = new Mailgun($api_key);
-      $response = $mailgun->get('address/validate', array('address' => $email, 'mailbox_verification' => true));
-
-      return $response->http_response_body->is_valid && $response->http_response_body->mailbox_verification;
+      return ! $validator->fails();
     }
 
     return true; // We don't care at this point.

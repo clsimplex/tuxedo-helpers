@@ -4,6 +4,7 @@ namespace CLSimplex\Tuxedo\Helpers;
 
 /**
  * @author Levon Zadravec-Powell levon@clsimplex.com
+ * @since  1.2.0 Updated get_keyword_score().
  * @since  1.1.0 updated get_keyword_score().
  * @since  1.0.0
  */
@@ -19,7 +20,10 @@ class SpamHelper {
    * Do not spend a lot of time on this. Merely a simple
    * catch for the time being.
    *
+   * Keyword scores are currently between [0.125, 2.5]
+   *
    * @author Levon Zadravec-Powell levon@clsimplex.com
+   * @since  1.2.0  Updated word list and scores.
    * @since  1.1.0  Updated word list and scores.
    * @since  1.0.0
    * @param  string $message
@@ -29,7 +33,12 @@ class SpamHelper {
     $score = 0;
 
     $keywords = [
+      'buy'        => 0.125,
+      'tablets'    => 0.125,
+      'pills'      => 0.125,
+      'cheap'      => 0.125,
       'traffic'    => 0.5,
+      'invest'     => 0.5,
       'casino'     => 1,
       'bitcoin'    => 1,
       'babes'      => 1,
@@ -37,12 +46,14 @@ class SpamHelper {
       'sex'        => 1.5,
       'porn'       => 2,
       'seo'        => 2,
+      'ico'        => 2,
       'milf'       => 2.5,
-      'getropin'   => 3,
-      'riptropin'  => 3,
-      'viagra'     => 3,
-      'hygetropin' => 3,
-      'cialis'     => 3,
+      'getropin'   => 2.5,
+      'riptropin'  => 2.5,
+      'viagra'     => 2.5,
+      'hygetropin' => 2.5,
+      'cialis'     => 2.5,
+      'tamoxifen'  => 2.5,
     ];
 
     $message = strtolower($message);

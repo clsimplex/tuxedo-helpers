@@ -11,8 +11,8 @@ namespace CLSimplex\Tuxedo\Helpers;
 class ArrayHelper {
 
   /**
-   * As part of the move toward unifying the components
-   * we can use this as another testable unit.
+   * Creates a string of HTML attributes you can insert into a tag.
+   * Uses key -> value pairings. key="value"
    *
    * @since  0.0.2 Fixed bug where a URL was one of the values.
    *               Reimplemented.
@@ -170,8 +170,16 @@ class ArrayHelper {
    * This also removes trailing and leading whitespace from entries.
    * Preserves array keys.
    *
+   * strlen returns zero for empty strings, which are falsy when running
+   * array_filter - hence the removal of empty strings here.
+   *
+   * Don't we love the order of parameters for array_filter and array_map?
+   *
+   * @since  1.2.0 updated phpdoc
    * @since  0.0.1
    * @link   https://stackoverflow.com/questions/3654295/remove-empty-array-elements#3654309
+   * @link   https://secure.php.net/manual/en/function.array-filter.php
+   * @link   https://secure.php.net/manual/en/function.array-map.php
    * @param  array $array
    * @return array
    */

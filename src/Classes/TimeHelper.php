@@ -55,7 +55,7 @@ class TimeHelper {
    * @param  int   $month
    * @return array
    */
-  public static function get_carbon__month( int $year, int $month ) {
+  public static function get_carbon__month(int $year, int $month) {
     if ( $month < 1 || $year < 1000 ) {
       return [];
     }

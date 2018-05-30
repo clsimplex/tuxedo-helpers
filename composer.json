@@ -1,11 +1,11 @@
 {
   "name": "clsimplex/helpers",
-  "description": "Collection of simple helper functions",
-  "keywords": [],
+  "description": "Collection of simple helper functions for our Laravel based meta-platform.",
+  "keywords": ['laravel', 'clsimplex', 'helpers'],
   "support": {
     "email": "info@clsimplex.com"
   },
-  "license": "proprietary",
+  "license": "MIT",
   "homepage": "https://clsimplex.com",
   "authors": [
     {
@@ -21,9 +21,7 @@
   ],
   "prefer-stable": true,
   "minimum-stability": "stable",
-  "require": {
-    "mailgun/mailgun-php": "~2.4.1"
-  },
+  "require": {},
   "require-dev": {
     "php": ">=5.6.4",
     "phpunit/phpunit": "~6.1",
@@ -38,14 +36,6 @@
     "psr-4": {
       "CLSimplex\\Tuxedo\\Helpers\\": "src/Classes/",
       "CLSimplex\\Tuxedo\\Helpers\\tests\\": "/tests"
-    }
-  },
-  "config": {
-    "sort-packages": true,
-    "process-timeout": 120,
-    "optimize-autoloader": true,
-    "github-oauth": {
-      "github.com": "6630db691d0eda5dad884b080e09206a0f82ab94"
     }
   }
 }

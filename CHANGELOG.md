@@ -6,6 +6,11 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## 1.2.1 - 2018-05-30
+
+### Fixed
+- composer.json `formatting hotfix. Keywords entries were not wrapped in double quotes.`
+
 ## 1.2.0 - 2018-05-30
 
 ### Added
@@ -62,19 +67,14 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ### Changed
 - package name update `CLSimplex\Tuxedo\Helpers => CLSimplex\Helpers`
 
-### Deprecated
-
-
-### Removed
-
-
 ### Fixed
 - get_attribute_string() URL value encoding bug
 
 
 ## 0.0.1 - 2018-01-17
 
-[Unreleased]: https://github.com/clsimplex/tuxedo-helpers/compare/1.2.0...develop
+[Unreleased]: https://github.com/clsimplex/tuxedo-helpers/compare/1.2.1...develop
+[1.2.1]: https://github.com/clsimplex/tuxedo-helpers/compare/1.2.0...1.2.1
 [1.2.0]: https://github.com/clsimplex/tuxedo-helpers/compare/1.1.0...1.2.0
 [1.1.0]: https://github.com/clsimplex/tuxedo-helpers/compare/1.0.0...1.1.0
 [1.0.0]: https://github.com/clsimplex/tuxedo-helpers/compare/0.1.0...1.0.0

@@ -9,6 +9,7 @@ use PHPUnit\Framework\TestCase;
 
 /**
  * @author Levon Zadravec-Powell levon@clsimplex.com
+ * @since  1.3.0 added test_array_cycle
  * @since  1.0.0 added test_get_attribute_string
  *               added test_with_swapped_keys
  *               added test_only_swapped_keys
@@ -224,6 +225,28 @@ class ArrayHelperTest extends TestCase {
    */
   public function test_array_difference(array $array_one, array $array_two, array $expected) {
     $this->assertEquals($expected, ArrayHelper::array_difference($array_one, $array_two) );
+  }
+
+  /**
+   * @TODO   fix empty case test.
+   * @since  1.3.0
+   * @covers ArrayHelper::array_cycle
+   * @group  helpers
+   * @group  unit
+   * @small
+   * @return void
+   */
+  public function test_array_cycle() {
+    $test_array = [1,2,3,4,5];
+
+    $this->assertEquals(1, ArrayHelper::array_cycle($test_array));
+    $this->assertEquals(2, ArrayHelper::array_cycle($test_array));
+    $this->assertEquals(3, ArrayHelper::array_cycle($test_array));
+    $this->assertEquals(4, ArrayHelper::array_cycle($test_array));
+    $this->assertEquals(5, ArrayHelper::array_cycle($test_array));
+    $this->assertEquals(1, ArrayHelper::array_cycle($test_array));
+
+    // $this->assertEquals(null, ArrayHelper::array_cycle([])); // Empty Case
   }
 
   /**

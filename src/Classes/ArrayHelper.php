@@ -6,6 +6,7 @@ namespace CLSimplex\Tuxedo\Helpers;
  * These are functions that help us manipulate arrays.
  *
  * @author Levon Zadravec-Powell levon@clsimplex.com
+ * @since  1.3.0 array_cycle()
  * @since  0.0.1
  */
 class ArrayHelper {
@@ -150,6 +151,33 @@ class ArrayHelper {
     sort($result); // sorts in place. No return value.
 
     return $result;
+  }
+
+  /**
+   * Array cycle iterates through an array each time it is called,
+   * moving the internal point back to the beginning if the end is reached.
+   *
+   * @since  1.3.0
+   * @link   https://secure.php.net/manual/en/function.next.php
+   * @link   https://secure.php.net/manual/en/function.reset.php
+   * @link   https://secure.php.net/manual/en/function.key.php
+   * @param  $array reference
+   * @return mixed
+   */
+  public static function array_cycle(array &$array) {
+    if (empty($array)) { // Deals with empty array edge case: reset().
+      return null;
+    }
+
+    $current_value = current($array);
+
+    $next = next($array);
+    $key  = key($array);
+    if ( $next === false || $key === false ) {
+      reset($array);
+    }
+
+    return $current_value;
   }
 
   /**

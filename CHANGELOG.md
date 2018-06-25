@@ -9,7 +9,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ## 1.3.0 - 2018-06-25
 
 ### Added
-- ArrayHelper::array_cycle
+- ArrayHelper::array_cycle `This plays with the internal array pointer - so dont treat a cycled array as normal. Call reset().`
 
 ## 1.2.1 - 2018-05-30
 

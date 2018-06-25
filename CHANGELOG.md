@@ -6,6 +6,11 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## 1.3.0 - 2018-06-25
+
+### Added
+- ArrayHelper::array_cycle
+
 ## 1.2.1 - 2018-05-30
 
 ### Fixed

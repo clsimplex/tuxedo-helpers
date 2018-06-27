@@ -6,17 +6,25 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
-## 1.3.0 - 2018-06-25
+## Added
+- Added QA tools
+
+## Changed
+- Using the markdown links in the CHANGELOG.md properly now.
+- Updating format as per QA tools
+- Obscured spammer URLs from unit tests.
+
+## [1.3.0] - 2018-06-25
 
 ### Added
 - ArrayHelper::array_cycle `This plays with the internal array pointer - so dont treat a cycled array as normal. Call reset().`
 
-## 1.2.1 - 2018-05-30
+## [1.2.1] - 2018-05-30
 
 ### Fixed
 - composer.json `formatting hotfix. Keywords entries were not wrapped in double quotes.`
 
-## 1.2.0 - 2018-05-30
+## [1.2.0] - 2018-05-30
 
 ### Added
 - Added CHANGELOG.md
@@ -26,14 +34,13 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Updated composer.json
 - phpunit.xml `Removed environmental variables`
 
-
 ### Removed
 - Most of README.md
 - mailgun/mailgun-php requirement
 - Mailgun requirement from MailHelper
 - Github OAUTH token for private tuxedo packages
 
-## 1.1.0 - 2018-04-30
+## [1.1.0] - 2018-04-30
 
 ### Changed
 - SpamHelper::get_keyword_score() `Updated keywords and scores with some keywords.`
@@ -43,7 +50,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - composer.lock
 - laravel/framework requirement
 
-## 1.0.0 - 2018-04-01
+## [1.0.0] - 2018-04-01
 
 ### Added
 - mailgun package
@@ -53,18 +60,18 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - package name update `CLSimplex\Helpers => clsimplex\helpers`
 - updated get_phase_of_current_day()
 
-## 0.1.0 - 2018-03-07
+## [0.1.0] - 2018-03-07
 
 ### Added
 - description in composer.json
 - StorageHelper `Wrapper for Laravel Storage facade.`
 
-## 0.0.3 - 2018-02-26
+## [0.0.3] - 2018-02-26
 
 ### Changed
 - namespace update `CLSimplex\Tuxedo\Helpers => src/Classes/`
 
-## 0.0.2 - 2018-02-20
+## [0.0.2] - 2018-02-20
 
 ### Added
 - test case for get_attribute_string() bugfix.
@@ -76,9 +83,10 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - get_attribute_string() URL value encoding bug
 
 
-## 0.0.1 - 2018-01-17
+## [0.0.1] - 2018-01-17
 
-[Unreleased]: https://github.com/clsimplex/tuxedo-helpers/compare/1.2.1...develop
+[Unreleased]: https://github.com/clsimplex/tuxedo-helpers/compare/1.3.0...develop
+[1.3.0]: https://github.com/clsimplex/tuxedo-helpers/compare/1.2.1...1.3.0
 [1.2.1]: https://github.com/clsimplex/tuxedo-helpers/compare/1.2.0...1.2.1
 [1.2.0]: https://github.com/clsimplex/tuxedo-helpers/compare/1.1.0...1.2.0
 [1.1.0]: https://github.com/clsimplex/tuxedo-helpers/compare/1.0.0...1.1.0

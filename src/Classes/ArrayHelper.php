@@ -43,6 +43,7 @@ class ArrayHelper {
    * Key map is in the format of [$old_key => $new_key].
    *
    *
+   * @since  1.3.1 removing else expression.
    * @since  0.0.1
    * @param  array $original_array
    * @param  array $key_map
@@ -56,10 +57,11 @@ class ArrayHelper {
     }
 
     array_walk($original_array, function($value, $old_key) use(&$result, $key_map) {
+      $result[$old_key] = $value; // We first assume the mapping does not exist.
+
       if ( array_key_exists($old_key, $key_map) ) {
-        $result[ $key_map[$old_key] ] = $value;
-      } else {
-        $result[ $old_key ] = $value;
+        $result[$key_map[$old_key]] = $value;
+        unset($result[$old_key]);
       }
     });
 

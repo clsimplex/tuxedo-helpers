@@ -58,13 +58,30 @@ class SpamHelper {
 
     $message = strtolower($message);
 
-    foreach ( $keywords as $word => $word_score ) {
+    foreach ($keywords as $word => $word_score) {
       $occurances = substr_count($message, $word);
 
       $score += $word_score * $occurances;
     }
 
     return $score;
+  }
+
+  /**
+   * @since  1.3.1
+   * @param  string $message
+   * @return bool
+   */
+  public static function get_russian_word_count(string $message) {
+    $result = [];
+
+    preg_match_all("/[\x{0410}-\x{042F}]+/ui", $message, $result); // Cryllic characters
+
+    if (! empty($result) && empty($result[0])) {
+      return 0;
+    }
+
+    return count($result[0]);
   }
 
   /**
@@ -112,6 +129,8 @@ class SpamHelper {
     if ( static::has_html_tags($message) ) {
       $base_score += 2; // Heavily suspicious!
     }
+
+    $base_score += static::get_russian_word_count($message);
 
     return $base_score + static::get_keyword_score($message);
   }

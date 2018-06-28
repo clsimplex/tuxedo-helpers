@@ -1,7 +1,7 @@
 {
   "name": "clsimplex/helpers",
   "description": "Collection of simple helper functions for our Laravel based meta-platform, tuxedo.",
-  "keywords": ["laravel", "clsimplex", "helpers"],
+  "keywords": ["laravel", "clsimplex", "helpers", "tuxedo"],
   "support": {
     "email": "info@clsimplex.com"
   },
@@ -24,8 +24,11 @@
   "require": {},
   "require-dev": {
     "php": ">=5.6.4",
+    "illuminate/support": "~5",
+    "phpmd/phpmd": "~2.6.0",
     "phpunit/phpunit": "~6.1",
-    "illuminate/support": "~5"
+    "friendsofphp/php-cs-fixer": "~2.12.1",
+    "squizlabs/php_codesniffer": "3.*"
   },
   "autoload": {
     "psr-4": {

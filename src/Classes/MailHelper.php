@@ -11,6 +11,7 @@ use CLSimplex\Tuxedo\Helpers\ArrayHelper;
  * that laravel provides is the mail module.
  *
  * @author Levon Zadravec-Powell levon@clsimplex.com
+ * @since  1.3.1 removed is_valid_email $mailgun_check parameter
  * @since  1.2.0 removing Mailgun features.
  * @since  0.0.1
  */
@@ -141,13 +142,13 @@ class MailHelper {
   /**
    * Careful, this function can potentially cost us money.
    *
+   * @since  1.3.1  removing $mailgun_check parameter
    * @since  1.2.0  removing Mailgun validation checks.
    * @since  0.0.1
    * @param  string $email
-   * @param  bool   $mailgun_check
    * @return bool
    */
-  public static function is_valid_email(string $email, bool $mailgun_check = false) {
+  public static function is_valid_email(string $email) {
     if ( empty($email) ) {
       return false;
     }

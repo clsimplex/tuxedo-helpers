@@ -16,6 +16,7 @@ use Illuminate\Support\Facades\Storage;
  * @codeCoverageIgnore
  */
 class StorageHelper {
+
   /**
    * @since  0.1.0
    * @codeCoverageIgnore
@@ -46,7 +47,7 @@ class StorageHelper {
    * @return void
    */
   public static function delete_local_file(string $file_name) {
-    if ( static::has_local_file($file_name) ) {
+    if (static::has_local_file($file_name)) {
       Storage::delete($file_name);
     }
   }
@@ -63,7 +64,7 @@ class StorageHelper {
    * @return string
    */
   public static function get_local_file(string $file_name) {
-    if ( ! static::has_local_file($file_name) ) {
+    if (! static::has_local_file($file_name)) {
       Storage::disk('local')->put( $file_name, '' );
     }
 
@@ -79,4 +80,5 @@ class StorageHelper {
   public static function get_local_file_path(string $file_name) {
     return storage_path('app/' . $file_name);
   }
+
 }

@@ -56,7 +56,7 @@ class TimeHelper {
    * @return array
    */
   public static function get_carbon__month(int $year, int $month) {
-    if ( $month < 1 || $year < 1000 ) {
+    if ($month < 1 || $year < 1000) {
       return [];
     }
 
@@ -64,7 +64,7 @@ class TimeHelper {
     $days_in_month = $month->daysInMonth;
     $month_array   = [];
 
-    for ( $i = 0; $i < $days_in_month; $i++ ) {
+    for ($i = 0; $i < $days_in_month; $i++) {
       // Array append.
       $month_array[] = $month->copy();
       $month->addDay();
@@ -83,7 +83,7 @@ class TimeHelper {
    * @return array
    */
   public static function get_carbon__week(int $year, int $month, int $day) {
-    if ( $month < 1 || $year < 1000 || $day < 1 || $day > 31 ) {
+    if ($month < 1 || $year < 1000 || $day < 1 || $day > 31) {
       return [];
     }
 
@@ -91,7 +91,7 @@ class TimeHelper {
     $this_week  = $day->startOfWeek();
     $week_array = [];
 
-    for ( $i = 0; $i < 7; $i++ ) {
+    for ($i = 0; $i < 7; $i++) {
       $week_array[] = $this_week->copy();
       $day->addDay();
     }
@@ -132,18 +132,19 @@ class TimeHelper {
 
     $result = 'night';
 
-    if ( $moment->lt($evening__end) ) {
+    if ($moment->lt($evening__end)) {
       $result = 'evening';
     }
 
-    if ( $moment->lt($afternoon__end) ) {
+    if ($moment->lt($afternoon__end)) {
       $result = 'afternoon';
     }
 
-    if ( $moment->lt($morning__end) ) {
+    if ($moment->lt($morning__end)) {
       $result = 'morning';
     }
 
     return $result;
   }
+
 }

@@ -6,13 +6,17 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [1.3.1] - 2018-06-27
+
 ## Added
 - Added QA tools
+- SpamHelper::get_russian_word_count `this will really help in the moment. Should we get so large for this to become a problem - we gladly accept the challege.`
 
 ## Changed
 - Using the markdown links in the CHANGELOG.md properly now.
 - Updating format as per QA tools
 - Obscured spammer URLs from unit tests.
+- Added get_russian_word_count to SpamHelper::get_spam_score. Having russian in a message will heavily penalize a spam score.
 
 ## [1.3.0] - 2018-06-25
 
@@ -85,7 +89,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [0.0.1] - 2018-01-17
 
-[Unreleased]: https://github.com/clsimplex/tuxedo-helpers/compare/1.3.0...develop
+[Unreleased]: https://github.com/clsimplex/tuxedo-helpers/compare/1.3.1...develop
+[1.3.0]: https://github.com/clsimplex/tuxedo-helpers/compare/1.3.0...1.3.1
 [1.3.0]: https://github.com/clsimplex/tuxedo-helpers/compare/1.2.1...1.3.0
 [1.2.1]: https://github.com/clsimplex/tuxedo-helpers/compare/1.2.0...1.2.1
 [1.2.0]: https://github.com/clsimplex/tuxedo-helpers/compare/1.1.0...1.2.0

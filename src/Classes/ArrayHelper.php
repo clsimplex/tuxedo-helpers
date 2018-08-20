@@ -6,6 +6,7 @@ namespace CLSimplex\Tuxedo\Helpers;
  * These are functions that help us manipulate arrays.
  *
  * @author Levon Zadravec-Powell levon@clsimplex.com
+ * @since  1.3.2 fixed class overwrite issue with get_attribute_string
  * @since  1.3.0 array_cycle()
  * @since  0.0.1
  */
@@ -15,21 +16,36 @@ class ArrayHelper {
    * Creates a string of HTML attributes you can insert into a tag.
    * Uses key -> value pairings. key="value"
    *
+   * @since  1.3.2
    * @since  0.0.2 Fixed bug where a URL was one of the values.
    *               Reimplemented.
    * @since  0.0.1
    * @link   http://php.net/http_build_query
    * @link   http://php.net/manual/en/function.str-pad.php
-   * @param  array $attributes
-   * @param  array $defaults
+   * @param  array  $attributes
+   * @param  array  $defaults
    * @return string
    */
   public static function get_attribute_string(array $attributes, array $defaults = []) {
-    $data   = array_merge($defaults, $attributes);
-    $result = [];
+    $attributes_copy = $attributes;
+    $result          = [];
 
-    foreach ( $data as $attribute => $value ) {
-      $result[] = $attribute . '="' . $value . '"';
+    foreach ($defaults as $key => $value) {
+      $string = $value;
+
+      if (array_key_exists($key, $attributes)) { // ADD the class if it's there.
+        $string .= ' ' . $attributes[$key];
+        unset($attributes[$key]); // So we don't add it twice.
+      }
+
+      $result[] = $key . '="' . $string . '"';
+    }
+
+    /*
+     * Now we add non-default attributes.
+     */
+    foreach ($attributes as $key => $value) {
+      $result[] = $key . '="' . $value . '"';
     }
 
     return implode(' ', $result);
@@ -84,13 +100,13 @@ class ArrayHelper {
   public static function only_swapped_keys(array $original_array, array $key_map = []) {
     $result = [];
 
-    if ( empty($key_map) ) {
+    if (empty($key_map)) {
       return $original_array;
     }
 
     // Pass result as a reference, we want to modify it.
     array_walk($original_array, function($value, $old_key) use(&$result, $key_map) {
-      if ( array_key_exists( $old_key, $key_map ) ) {
+      if (array_key_exists( $old_key, $key_map)) {
         $result[ $key_map[$old_key] ] = $value;
       }
     });
@@ -110,12 +126,12 @@ class ArrayHelper {
    * @return bool
    */
   public static function custom_key_exists($keys, array $array = []) {
-    if ( empty($array) ) {
+    if (empty($array)) {
       return false;
     }
 
     // Convert to array.
-    if ( is_string($keys) ) {
+    if (is_string($keys)) {
       $keys = [$keys];
     }
 
@@ -199,10 +215,8 @@ class ArrayHelper {
    * Removes values with only whitespace or are empty.
    * This also removes trailing and leading whitespace from entries.
    * Preserves array keys.
-   *
    * strlen returns zero for empty strings, which are falsy when running
    * array_filter - hence the removal of empty strings here.
-   *
    * Don't we love the order of parameters for array_filter and array_map?
    *
    * @since  1.2.0 updated phpdoc

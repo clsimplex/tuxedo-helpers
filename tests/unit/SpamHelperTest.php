@@ -14,6 +14,7 @@ use PHPUnit\Framework\TestCase;
  */
 class SpamHelperTest extends TestCase {
   /**
+   * @since  1.3.2 added new testcase.
    * @since  1.3.1 removing dickhead spammer urls
    * @since  1.0.0
    * @see    SpamHelperTest::test_get_keyword_score
@@ -27,6 +28,7 @@ class SpamHelperTest extends TestCase {
       'Spam string 1' => ['<a href=http://www.xxxxx.com/js/cache.asp?str=160-Getropin-Price-Buy-Hygetropin-China-Riptropin-Results>Getropin Price</a> Examine',    12.625],
       'Spam string 2' => ['<a href=http://www.xxxxx.il/care/system.asp?z=354-Cheap-Uk-Viagra-For-Sale-Buy-Levitra-Uk-Cheap-Lovegra-Uk>Cheap Uk Viagra For Sale</a', 5.5],
       'Spam 3'        => ['Invest $ 1,000 to earn $ 700,000 by the end of 2018. Only 100% of ICO insider information: http://top-5-ico.ml/?p=35156', 4.5],
+      //'Spam 4'        => ['#1 Online РЎasino: http://xx-xx.ru/xx/url=https://xx.cc/xxxxxx', 1], // To implement later.
     ];
   }
 

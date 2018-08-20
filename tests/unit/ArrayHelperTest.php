@@ -27,9 +27,9 @@ class ArrayHelperTest extends TestCase {
       'all empty arrays' => [[], [], ''],
       'simple case'      => [['class' => 'class-one'], [], 'class="class-one"'],
       'two attributes'   => [['id' => 'id-one', 'class' => 'class-one'], [], 'id="id-one" class="class-one"'],
-      'default case'     => [['class' => 'class-two'], ['class' => 'default-one'], 'class="class-two"'],
+      'default case'     => [['class' => 'class-two'], ['class' => 'default-one'], 'class="default-one class-two"'],
       'space case'       => [['placeholder' => 'placeholder value'], [], 'placeholder="placeholder value"'],
-      'all cases'        => [['placeholder' => 'placeholder value', 'id' => 'id-one', 'class' => 'class-one'], ['class' => 'default'], 'class="class-one" placeholder="placeholder value" id="id-one"'],
+      'all cases'        => [['placeholder' => 'placeholder value', 'id' => 'id-one', 'class' => 'class-one'], ['class' => 'default'], 'class="default class-one" placeholder="placeholder value" id="id-one"'],
       'http encoding'    => [['action' => 'http://website.com'], [], 'action="http://website.com"'],
       'http encoding brackets' => [['placeholder' => 'This value (that value)'], [], 'placeholder="This value (that value)"'],
       'form create bug'  => [[

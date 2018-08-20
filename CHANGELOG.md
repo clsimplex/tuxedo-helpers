@@ -6,6 +6,14 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [1.3.2]
+
+## Added
+- New SpamHelper test cases based on real spam. Not yet implemented.
+
+## Fixed
+- ArrayHelper::get_attribute_string() `when the classes are modified within the view - local custom classes used to overwrite the changes. "Custom" classes are added to the default classes now.`
+
 ## [1.3.1] - 2018-06-27
 
 ## Added
@@ -16,7 +24,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Using the markdown links in the CHANGELOG.md properly now.
 - Updating format as per QA tools
 - Obscured spammer URLs from unit tests.
-- Added get_russian_word_count to SpamHelper::get_spam_score. Having russian in a message will heavily penalize a spam score.
+- Added get_russian_word_count to SpamHelper::get_spam_score. Having russian in a message will heavily penalize the spam score.
 
 ## [1.3.0] - 2018-06-25
 
@@ -89,8 +97,9 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [0.0.1] - 2018-01-17
 
-[Unreleased]: https://github.com/clsimplex/tuxedo-helpers/compare/1.3.1...develop
-[1.3.0]: https://github.com/clsimplex/tuxedo-helpers/compare/1.3.0...1.3.1
+[Unreleased]: https://github.com/clsimplex/tuxedo-helpers/compare/1.3.2...develop
+[1.3.2]: https://github.com/clsimplex/tuxedo-helpers/compare/1.3.1...1.3.2
+[1.3.1]: https://github.com/clsimplex/tuxedo-helpers/compare/1.3.0...1.3.1
 [1.3.0]: https://github.com/clsimplex/tuxedo-helpers/compare/1.2.1...1.3.0
 [1.2.1]: https://github.com/clsimplex/tuxedo-helpers/compare/1.2.0...1.2.1
 [1.2.0]: https://github.com/clsimplex/tuxedo-helpers/compare/1.1.0...1.2.0

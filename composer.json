@@ -2,6 +2,7 @@
   "name": "clsimplex/helpers",
   "description": "Collection of simple helper functions for our Laravel based meta-platform, tuxedo.",
   "keywords": ["laravel", "clsimplex", "helpers", "tuxedo"],
+  "repositories": [],
   "support": {
     "email": "info@clsimplex.com"
   },

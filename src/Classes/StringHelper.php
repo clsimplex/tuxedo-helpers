@@ -55,7 +55,7 @@ class StringHelper {
    * @return string
    */
   public static function bleach_string($untrusted_string) {
-    if ( is_null($untrusted_string) ) {
+    if (is_null($untrusted_string)) {
       return '';
     }
 

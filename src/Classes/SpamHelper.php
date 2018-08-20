@@ -4,6 +4,7 @@ namespace CLSimplex\Tuxedo\Helpers;
 
 /**
  * @author Levon Zadravec-Powell levon@clsimplex.com
+ * @since  1.3.2 Minor updates.
  * @since  1.2.0 Updated get_keyword_score().
  * @since  1.1.0 updated get_keyword_score().
  * @since  1.0.0
@@ -42,6 +43,7 @@ class SpamHelper {
       'casino'     => 1,
       'bitcoin'    => 1,
       'babes'      => 1,
+      'erotic'     => 1.25,
       'fuck'       => 1.5,
       'sex'        => 1.5,
       'porn'       => 2,
@@ -96,16 +98,17 @@ class SpamHelper {
   public static function is_email_blacklisted(string $email) {
     $domains = [
       'baburn', 'marvsz', 'zxcvbnmy', 'getabusinessfunded',
+      'profunding', 'businesscapitaladvisor',
       'probusinessfunding', 'fastfundingadvisors',
       'businessloansfundednow', 'noreply', 'mobileyell',
     ];
 
-    if ( ends_with($email, '.ru') ) { // Block ALL russian emails.
+    if (ends_with($email, '.ru')) { // Block ALL russian emails.
       return true;
     }
 
-    foreach ( $domains as $bad_domain ) {
-      if ( stripos($email, $bad_domain) > 0 ) {
+    foreach ($domains as $bad_domain) {
+      if (stripos($email, $bad_domain) > 0) {
         return true;
       }
     }
@@ -122,11 +125,11 @@ class SpamHelper {
   public static function get_spam_score(string $email, string $message) {
     $base_score = 0.5; // No one is born innocent.
 
-    if ( static::is_email_blacklisted($email) ) {
+    if (static::is_email_blacklisted($email)) {
       $base_score += 5; // Game over!
     }
 
-    if ( static::has_html_tags($message) ) {
+    if (static::has_html_tags($message)) {
       $base_score += 2; // Heavily suspicious!
     }
 

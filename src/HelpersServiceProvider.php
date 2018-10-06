@@ -18,6 +18,7 @@ class HelpersServiceProvider extends ServiceProvider {
    * @return void
    */
   public function boot() {
+
   }
 
   /**

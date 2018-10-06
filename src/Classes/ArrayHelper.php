@@ -53,11 +53,11 @@ class ArrayHelper {
 
   /**
    * If there is no mapping, the value is KEPT.
-   *
    * A simple mapping function.
    * Essentially this allows us to swap keys - if a swapping exists.
    * Key map is in the format of [$old_key => $new_key].
    *
+   * Previously known as get_mapped_array().
    *
    * @since  1.3.1 removing else expression.
    * @since  0.0.1
@@ -121,6 +121,7 @@ class ArrayHelper {
    * must exists for this to be true.
    *
    * @since  0.0.1
+   * @link   https://secure.php.net/manual/en/function.array-key-exists.php
    * @param  mixed $keys
    * @param  array $array
    * @return bool
@@ -156,6 +157,7 @@ class ArrayHelper {
    * This does not dive deeper into the set.
    * Keys are destroyed and the result is sorted.
    *
+   * @TODO   ArrayHelper::array_difference -> ArrayHelper::difference?
    * @since  0.0.1
    * @link   http://php.net/manual/en/function.array-diff.php
    * @param  array $array_one
@@ -175,6 +177,7 @@ class ArrayHelper {
    * Array cycle iterates through an array each time it is called,
    * moving the internal point back to the beginning if the end is reached.
    *
+   * @TODO   ArrayHelper::array_cycle -> ArrayHelper::cycle?
    * @since  1.3.0
    * @link   https://secure.php.net/manual/en/function.next.php
    * @link   https://secure.php.net/manual/en/function.reset.php

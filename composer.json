@@ -23,7 +23,7 @@
   "prefer-stable": true,
   "minimum-stability": "stable",
   "require": {
-    "nesbot/carbon": "~2.3.0"
+    "nesbot/carbon": "~1.9.0"
   },
   "require-dev": {
     "php": ">=5.6.4",

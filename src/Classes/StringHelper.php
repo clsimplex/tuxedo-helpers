@@ -102,13 +102,13 @@ class StringHelper {
   public static function get_slug_from_url(string $canonical, string $url_root) {
     $slug = static::bleach_string(substr($canonical, strlen($url_root)));
 
-    if ( empty($slug) ) {
+    if (empty($slug)) {
       return '/';
     }
 
     $query_position = strpos($slug, '?');
 
-    if ( $query_position === false ) {
+    if ($query_position === false) {
       return $slug;
     }
 
@@ -142,4 +142,5 @@ class StringHelper {
       return $original_string;
     }
   }
+
 }

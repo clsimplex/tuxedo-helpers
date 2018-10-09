@@ -16,6 +16,7 @@ class ArrayHelper {
    * Creates a string of HTML attributes you can insert into a tag.
    * Uses key -> value pairings. key="value"
    *
+   * @since  1.4.0 Removed unused variable.
    * @since  1.3.2
    * @since  0.0.2 Fixed bug where a URL was one of the values.
    *               Reimplemented.
@@ -27,8 +28,7 @@ class ArrayHelper {
    * @return string
    */
   public static function get_attribute_string(array $attributes, array $defaults = []) {
-    $attributes_copy = $attributes;
-    $result          = [];
+    $result = [];
 
     foreach ($defaults as $key => $value) {
       $string = $value;
@@ -53,11 +53,11 @@ class ArrayHelper {
 
   /**
    * If there is no mapping, the value is KEPT.
-   *
    * A simple mapping function.
    * Essentially this allows us to swap keys - if a swapping exists.
    * Key map is in the format of [$old_key => $new_key].
    *
+   * Previously known as get_mapped_array().
    *
    * @since  1.3.1 removing else expression.
    * @since  0.0.1
@@ -68,14 +68,14 @@ class ArrayHelper {
   public static function with_swapped_keys(array $original_array, array $key_map = []) {
     $result = [];
 
-    if ( empty($key_map) ) {
+    if (empty($key_map)) {
       return $original_array;
     }
 
     array_walk($original_array, function($value, $old_key) use(&$result, $key_map) {
       $result[$old_key] = $value; // We first assume the mapping does not exist.
 
-      if ( array_key_exists($old_key, $key_map) ) {
+      if (array_key_exists($old_key, $key_map)) {
         $result[$key_map[$old_key]] = $value;
         unset($result[$old_key]);
       }
@@ -121,6 +121,7 @@ class ArrayHelper {
    * must exists for this to be true.
    *
    * @since  0.0.1
+   * @link   https://secure.php.net/manual/en/function.array-key-exists.php
    * @param  mixed $keys
    * @param  array $array
    * @return bool
@@ -156,6 +157,7 @@ class ArrayHelper {
    * This does not dive deeper into the set.
    * Keys are destroyed and the result is sorted.
    *
+   * @TODO   ArrayHelper::array_difference -> ArrayHelper::difference?
    * @since  0.0.1
    * @link   http://php.net/manual/en/function.array-diff.php
    * @param  array $array_one
@@ -175,6 +177,7 @@ class ArrayHelper {
    * Array cycle iterates through an array each time it is called,
    * moving the internal point back to the beginning if the end is reached.
    *
+   * @TODO   ArrayHelper::array_cycle -> ArrayHelper::cycle?
    * @since  1.3.0
    * @link   https://secure.php.net/manual/en/function.next.php
    * @link   https://secure.php.net/manual/en/function.reset.php
@@ -191,7 +194,7 @@ class ArrayHelper {
 
     $next = next($array);
     $key  = key($array);
-    if ( $next === false || $key === false ) {
+    if ($next === false || $key === false) {
       reset($array);
     }
 
@@ -230,4 +233,5 @@ class ArrayHelper {
   public static function remove_empty_strings(array $array) {
     return array_filter(array_map('trim', $array), 'strlen');
   }
+
 }

@@ -6,7 +6,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
-## [1.4.0]
+## [1.4.0] - 2018-10-09
 
 ### Added
 - FileHelper has been moved here from Monocle, along with its tests.
@@ -20,7 +20,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ### Removed
 - Gate import in the HelpersServiceProvider class.
 
-## [1.3.2]
+## [1.3.2] - 2018-08-20
 
 ### Added
 - New SpamHelper test cases based on real spam. Not yet implemented.
@@ -112,7 +112,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ## [0.0.1] - 2018-01-17
 
 [Unreleased]: https://github.com/clsimplex/tuxedo-helpers/compare/1.4.0...develop
-[1.3.2]: https://github.com/clsimplex/tuxedo-helpers/compare/1.3.2...1.4.0
+[1.4.0]: https://github.com/clsimplex/tuxedo-helpers/compare/1.3.2...1.4.0
 [1.3.2]: https://github.com/clsimplex/tuxedo-helpers/compare/1.3.1...1.3.2
 [1.3.1]: https://github.com/clsimplex/tuxedo-helpers/compare/1.3.0...1.3.1
 [1.3.0]: https://github.com/clsimplex/tuxedo-helpers/compare/1.2.1...1.3.0

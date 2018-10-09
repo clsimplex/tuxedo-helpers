@@ -1,0 +1,5 @@
+# file <phpmetrics.yml>
+phpmetrics:
+  path:
+    exclude: Migrations|resources|vendor|tests|node_modules|cache
+    extensions: php|json

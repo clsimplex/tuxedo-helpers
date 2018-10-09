@@ -2,13 +2,13 @@
 
 namespace CLSimplex\Tuxedo\Helpers;
 
-use Illuminate\Support\Facades\Gate;
 use Illuminate\Support\ServiceProvider;
 
 /**
  * This does nothing fancy, as you can likely tell...
  *
  * @author Levon Zadravec-Powell levon@clsimplex.com
+ * @since  1.4.0 removed Gate import
  * @since  0.0.1
  */
 class HelpersServiceProvider extends ServiceProvider {
@@ -18,6 +18,7 @@ class HelpersServiceProvider extends ServiceProvider {
    * @return void
    */
   public function boot() {
+
   }
 
   /**

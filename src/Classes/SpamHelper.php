@@ -70,9 +70,10 @@ class SpamHelper {
   }
 
   /**
+   * @since  1.4.0 updated PHPDOC return type (bool -> int.)
    * @since  1.3.1
    * @param  string $message
-   * @return bool
+   * @return int
    */
   public static function get_russian_word_count(string $message) {
     $result = [];
@@ -137,4 +138,5 @@ class SpamHelper {
 
     return $base_score + static::get_keyword_score($message);
   }
+
 }

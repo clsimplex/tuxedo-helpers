@@ -44,7 +44,7 @@ class MailHelper {
    * @return bool
    */
   public static function is_valid_unsubscribe(string $email, string $hash) {
-    if ( ! static::is_valid_email($email) ) {
+    if (! static::is_valid_email($email)) {
       return false;
     }
 
@@ -63,13 +63,13 @@ class MailHelper {
    * @return array
    */
   public static function mixed_to_list($mixed_input) {
-    if ( empty($mixed_input) ) {
+    if (empty($mixed_input)) {
       return [];
     }
 
     $array = $mixed_input;
 
-    if ( is_string($array) ) {
+    if (is_string($array)) {
       $array = explode(',', $array);
     }
 
@@ -149,7 +149,7 @@ class MailHelper {
    * @return bool
    */
   public static function is_valid_email(string $email) {
-    if ( empty($email) ) {
+    if (empty($email)) {
       return false;
     }
 
@@ -160,7 +160,7 @@ class MailHelper {
      *
      * If it's obviously a bad email, we reject it.
      */
-    if ( env('APP_ENV') !== 'testing' ) {
+    if (env('APP_ENV') !== 'testing') {
       $validator = Validator::make(['email' => $email], ['email' => 'required|email|min:5|max:254']);
 
       return ! $validator->fails();
@@ -182,4 +182,5 @@ class MailHelper {
       return static::is_valid_email($value);
     });
   }
+
 }

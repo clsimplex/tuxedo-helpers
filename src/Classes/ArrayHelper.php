@@ -16,6 +16,7 @@ class ArrayHelper {
    * Creates a string of HTML attributes you can insert into a tag.
    * Uses key -> value pairings. key="value"
    *
+   * @since  1.4.0 Removed unused variable.
    * @since  1.3.2
    * @since  0.0.2 Fixed bug where a URL was one of the values.
    *               Reimplemented.
@@ -27,8 +28,7 @@ class ArrayHelper {
    * @return string
    */
   public static function get_attribute_string(array $attributes, array $defaults = []) {
-    $attributes_copy = $attributes;
-    $result          = [];
+    $result = [];
 
     foreach ($defaults as $key => $value) {
       $string = $value;
@@ -68,14 +68,14 @@ class ArrayHelper {
   public static function with_swapped_keys(array $original_array, array $key_map = []) {
     $result = [];
 
-    if ( empty($key_map) ) {
+    if (empty($key_map)) {
       return $original_array;
     }
 
     array_walk($original_array, function($value, $old_key) use(&$result, $key_map) {
       $result[$old_key] = $value; // We first assume the mapping does not exist.
 
-      if ( array_key_exists($old_key, $key_map) ) {
+      if (array_key_exists($old_key, $key_map)) {
         $result[$key_map[$old_key]] = $value;
         unset($result[$old_key]);
       }
@@ -194,7 +194,7 @@ class ArrayHelper {
 
     $next = next($array);
     $key  = key($array);
-    if ( $next === false || $key === false ) {
+    if ($next === false || $key === false) {
       reset($array);
     }
 
@@ -233,4 +233,5 @@ class ArrayHelper {
   public static function remove_empty_strings(array $array) {
     return array_filter(array_map('trim', $array), 'strlen');
   }
+
 }

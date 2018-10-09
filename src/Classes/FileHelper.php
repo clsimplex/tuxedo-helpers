@@ -199,4 +199,5 @@ class FileHelper {
   public static function get_public_view(string $slug, string $local_path, array $extra_data = []) {
     return static::get_view($slug, $local_path, $extra_data);
   }
+
 }

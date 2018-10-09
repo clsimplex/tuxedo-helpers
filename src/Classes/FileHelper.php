@@ -24,7 +24,6 @@ class FileHelper {
    * This also means we don't want to throw any Exception - even if this method
    * really suggests that throwing an exception is the best fall through case.
    *
-   * @TODO   rename? The public part is a little misleading and doesnt add to function name.
    * @since  1.4.0
    * @codeCoverageIgnore
    * @param  string $view_name

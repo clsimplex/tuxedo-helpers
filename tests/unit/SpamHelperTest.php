@@ -16,13 +16,14 @@ class SpamHelperTest extends TestCase {
 
   public function dataprovider__is_spam() {
     return [
-      'empty fields'   => [['name' => '', 'message' => ''], false], // ideally these never get submitted.
-      'real example 1' => [[
+      'empty fields'    => [['name' => '', 'message' => ''], ['name', 'message'], false], // ideally these never get submitted.
+      'empty whitelist' => [['name' => '', 'message' => ''], [], false], // ideally the whitelist isn't messed up
+      'real example 1'  => [[
         'name'    => 'RonnieRuine',
         'email'   => 'jamessnowden@yahoo.com',
         'subject' => 'Dating Hot Girls in your city',
         'message' => 'Find yourself a girl for an evening for sex in your city: https://hugeurl.com/hotgirls86332'
-      ], true],
+      ], ['name', 'email', 'subject', 'message'], true],
     ];
   }
 
@@ -104,11 +105,12 @@ class SpamHelperTest extends TestCase {
    * @group  unit
    * @small
    * @param  array $input
-   * @param  mixed  $expected
+   * @param  array $whitelist
+   * @param  bool  $expected
    * @return void
    */
-  public function test_is_spam(array $input, $expected) {
-    $this->assertEquals($expected, SpamHelper::is_spam($input));
+  public function test_is_spam(array $input, array $whitelist, bool $expected) {
+    $this->assertEquals($expected, SpamHelper::is_spam($input, $whitelist));
   }
 
   /**

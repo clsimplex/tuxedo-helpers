@@ -6,6 +6,13 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+### Added
+- DatabaseHelper added from operations package.
+- SpamHelper::is_spam(). Checks all fields for spam score now.
+
+### Changed
+- SpamHelper revamp.
+
 ## [1.4.0] - 2018-10-09
 
 ### Added

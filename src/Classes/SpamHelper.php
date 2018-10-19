@@ -13,6 +13,18 @@ class SpamHelper {
 
   const SCORE_THRESHOLD = 3;
 
+  /**
+   * @since  1.5.0
+   * @param  array $input
+   * @return bool
+   */
+  public static function is_spam(array $input) {
+    // Grab each field
+    // check spam score for each field
+
+    // calculate is_spam()
+  }
+
   public static function has_html_tags(string $message) {
     return strip_tags($message) !== $message;
   }

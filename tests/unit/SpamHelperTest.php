@@ -29,6 +29,8 @@ class SpamHelperTest extends TestCase {
       'Spam string 2' => ['<a href=http://www.xxxxx.il/care/system.asp?z=354-Cheap-Uk-Viagra-For-Sale-Buy-Levitra-Uk-Cheap-Lovegra-Uk>Cheap Uk Viagra For Sale</a', 5.5],
       'Spam 3'        => ['Invest $ 1,000 to earn $ 700,000 by the end of 2018. Only 100% of ICO insider information: http://top-5-ico.ml/?p=35156', 4.5],
       //'Spam 4'        => ['#1 Online РЎasino: http://xx-xx.ru/xx/url=https://xx.cc/xxxxxx', 1], // To implement later.
+      // 'Spam 5' => ['How To Make Money $200 Per Day (Payment Proof): http://shop.bsigroup.com/AffiliateRedirect.aspx?url=https://vk.cc/8pBiII'],
+      // 'Spam 6' => ['Hello Downloads music club Dj's, mp3 private server. http://0daymusic.org/premium.php Best Regards, Robert'],
     ];
   }
 

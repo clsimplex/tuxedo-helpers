@@ -42,8 +42,16 @@ class FileHelper {
   }
 
   /**
+   * This gives you the resource path for a PACKAGE.
+   * Reveiw this.
+   *
    * @since  1.4.0
+   * @TODO   remove in 2.0.0
+   * @TODO   likely deprecate this.
+   * @deprecated
    * @TODO   write tests.
+   * @TODO   make package flexible
+   * @TODO   currently unused - I think
    * @param  string $file_name
    * @return string
    */

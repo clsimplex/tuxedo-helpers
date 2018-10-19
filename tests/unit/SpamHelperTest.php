@@ -13,6 +13,19 @@ use PHPUnit\Framework\TestCase;
  * @since  1.0.0
  */
 class SpamHelperTest extends TestCase {
+
+  public function dataprovider__is_spam() {
+    return [
+      'empty fields'   => [['name' => '', 'message' => ''], false], // ideally these never get submitted.
+      'real example 1' => [[
+        'name'    => 'RonnieRuine',
+        'email'   => 'jamessnowden@yahoo.com',
+        'subject' => 'Dating Hot Girls in your city',
+        'message' => 'Find yourself a girl for an evening for sex in your city: https://hugeurl.com/hotgirls86332'
+      ], true],
+    ];
+  }
+
   /**
    * @since  1.3.2 added new testcase.
    * @since  1.3.1 removing dickhead spammer urls
@@ -29,6 +42,8 @@ class SpamHelperTest extends TestCase {
       'Spam string 2' => ['<a href=http://www.xxxxx.il/care/system.asp?z=354-Cheap-Uk-Viagra-For-Sale-Buy-Levitra-Uk-Cheap-Lovegra-Uk>Cheap Uk Viagra For Sale</a', 5.5],
       'Spam 3'        => ['Invest $ 1,000 to earn $ 700,000 by the end of 2018. Only 100% of ICO insider information: http://top-5-ico.ml/?p=35156', 4.5],
       //'Spam 4'        => ['#1 Online РЎasino: http://xx-xx.ru/xx/url=https://xx.cc/xxxxxx', 1], // To implement later.
+      // 'Spam 5' => ['How To Make Money $200 Per Day (Payment Proof): http://shop.bsigroup.com/AffiliateRedirect.aspx?url=https://vk.cc/8pBiII'],
+      // 'Spam 6' => ['Hello Downloads music club Dj's, mp3 private server. http://0daymusic.org/premium.php Best Regards, Robert'],
     ];
   }
 
@@ -79,6 +94,21 @@ class SpamHelperTest extends TestCase {
       'Spam email 4' => ['amerpropas1967@seocdvig.ru',  true],
       'Spam email 5' => ['timothy@yahoo.ru',            true],
     ];
+  }
+
+  /**
+   * @since  1.5.0
+   * @dataProvider dataprovider__is_spam
+   * @covers SpamHelper::is_spam
+   * @group  helpers
+   * @group  unit
+   * @small
+   * @param  array $input
+   * @param  mixed  $expected
+   * @return void
+   */
+  public function test_is_spam(array $input, $expected) {
+    $this->assertEquals($expected, SpamHelper::is_spam($input));
   }
 
   /**

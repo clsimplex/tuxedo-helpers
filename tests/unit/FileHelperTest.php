@@ -14,9 +14,6 @@ use PHPUnit\Framework\TestCase;
 class FileHelperTest extends TestCase {
 
   /**
-   * Dependent on current models within Classes.
-   * Maybe test for a subset?
-   *
    * @since  1.4.0
    * @see    FileHelperTest::test_get_directory__classpaths
    * @return array
@@ -38,6 +35,7 @@ class FileHelperTest extends TestCase {
   }
 
   /**
+   * @since        1.5.0 testing for array subset
    * @since        1.4.0
    * @dataProvider dataprovider__get_directory__classpaths
    * @covers       FileHelper::get_directory__classpaths
@@ -47,7 +45,7 @@ class FileHelperTest extends TestCase {
    * @return       void
    */
   public function test_get_directory__classpaths(string $directory_path, string $class_prefix, array $expected) {
-    $this->assertEquals($expected, FileHelper::get_directory__classpaths($directory_path, $class_prefix));
+    $this->assertArraySubset($expected, FileHelper::get_directory__classpaths($directory_path, $class_prefix));
   }
 
   /**

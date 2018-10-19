@@ -13,8 +13,67 @@ class SpamHelper {
 
   const SCORE_THRESHOLD = 3;
 
+  /**
+   * @since  1.5.0
+   * @param  array $input
+   * @return bool
+   */
+  public static function is_spam(array $input) {
+    $score = 0;
+
+    foreach($input as $field => $value) {
+      $score += static::get_field_score($field, $value);
+    }
+
+    return $score >= static::SCORE_THRESHOLD;
+  }
+
+  /**
+   * @since  1.5.0
+   * @param  string $field currently unused.
+   * @param  mixed  $value
+   * @return int
+   */
+  public static function get_field_score(string $field, $value) {
+    if(empty($value)) {
+      return 0;
+    }
+
+    $score = 0;
+    // Containing URLs/HTML is suspicious
+    // COntaining cryllic characters is suspicious
+    // single "words" that are half numbers are suspicious
+
+    $score += static::get_keyword_score($value);
+
+    if (static::has_html_tags($value)) {
+      $score += 2; // Heavily $value!
+    }
+
+
+    if (static::has_url($value)) {
+      $score += 2; // Heavily $value!
+    }
+
+    $score += static::get_russian_word_count($value);
+
+    return $score;
+  }
+
   public static function has_html_tags(string $message) {
     return strip_tags($message) !== $message;
+  }
+
+  /**
+   * # signs are delimiters for the regex pattern.
+   *
+   * @since  1.5.0
+   * @link   https://stackoverflow.com/a/5968861
+   * @param  string $value
+   * @return bool
+   */
+  public static function has_url(string $value) {
+    return (bool)preg_match("#https?://.+#", $value);
   }
 
   /**
@@ -24,6 +83,7 @@ class SpamHelper {
    * Keyword scores are currently between [0.125, 2.5]
    *
    * @author Levon Zadravec-Powell levon@clsimplex.com
+   * @since  1.5.0  updated.
    * @since  1.2.0  Updated word list and scores.
    * @since  1.1.0  Updated word list and scores.
    * @since  1.0.0
@@ -35,11 +95,13 @@ class SpamHelper {
 
     $keywords = [
       'buy'        => 0.125,
+      'girls'      => 0.125,
       'tablets'    => 0.125,
       'pills'      => 0.125,
       'cheap'      => 0.125,
       'traffic'    => 0.5,
       'invest'     => 0.5,
+      'dating'     => 0.5,
       'casino'     => 1,
       'bitcoin'    => 1,
       'babes'      => 1,
@@ -70,12 +132,17 @@ class SpamHelper {
   }
 
   /**
+   * @since  1.5.0 empty $message case added.
    * @since  1.4.0 updated PHPDOC return type (bool -> int.)
    * @since  1.3.1
    * @param  string $message
    * @return int
    */
   public static function get_russian_word_count(string $message) {
+    if(empty($message)) {
+      return 0;
+    }
+
     $result = [];
 
     preg_match_all("/[\x{0410}-\x{042F}]+/ui", $message, $result); // Cryllic characters
@@ -89,6 +156,9 @@ class SpamHelper {
 
   /**
    * @author Levon Zadravec-Powell levon@clsimplex.com
+   * @TODO   remove in 2.0.0
+   * @deprecated
+   * @since  1.5.0 deprecated
    * @since  1.1.0 updated email domain list.
    *               Blocking all russian email addresses.
    * @since  1.0.0
@@ -118,6 +188,9 @@ class SpamHelper {
   }
 
   /**
+   * @TODO   remove in 2.0.0
+   * @deprecated
+   * @since  1.5.0 deprecated
    * @since  1.0.0
    * @param  string $email
    * @param  string $message

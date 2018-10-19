@@ -14,21 +14,28 @@ class SpamHelper {
   const SCORE_THRESHOLD = 3;
 
   /**
+   * Whitelist is counter-intuitive in this sense. Be careful.
+   *
+   * @since  1.5.1 added $whitelist parameter
    * @since  1.5.0
    * @param  array $input
+   * @param  array $whitelist
    * @return bool
    */
-  public static function is_spam(array $input) {
+  public static function is_spam(array $input, array $whitelist) {
     $score = 0;
 
     foreach($input as $field => $value) {
-      $score += static::get_field_score($field, $value);
+      if (in_array($field, $whitelist)) {
+        $score += static::get_field_score($field, $value);
+      }
     }
 
     return $score >= static::SCORE_THRESHOLD;
   }
 
   /**
+   * @since  1.5.1  urls automatically fail now.
    * @since  1.5.0
    * @param  string $field currently unused.
    * @param  mixed  $value
@@ -39,19 +46,18 @@ class SpamHelper {
       return 0;
     }
 
+    if (static::has_url($value)) {
+      return static::SCORE_THRESHOLD;
+    }
+
     $score = 0;
     // Containing URLs/HTML is suspicious
     // COntaining cryllic characters is suspicious
-    // single "words" that are half numbers are suspicious
+    // single "words" that mixed numbers and letters are suspicious
 
     $score += static::get_keyword_score($value);
 
     if (static::has_html_tags($value)) {
-      $score += 2; // Heavily $value!
-    }
-
-
-    if (static::has_url($value)) {
       $score += 2; // Heavily $value!
     }
 

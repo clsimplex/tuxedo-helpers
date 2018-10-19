@@ -13,6 +13,19 @@ use PHPUnit\Framework\TestCase;
  * @since  1.0.0
  */
 class SpamHelperTest extends TestCase {
+
+  public function dataprovider__is_spam() {
+    return [
+      'empty fields'   => [['name' => '', 'message' => ''], false], // ideally these never get submitted.
+      'real example 1' => [[
+        'name'    => 'RonnieRuine',
+        'email'   => 'jamessnowden@yahoo.com',
+        'subject' => 'Dating Hot Girls in your city',
+        'message' => 'Find yourself a girl for an evening for sex in your city: https://hugeurl.com/hotgirls86332'
+      ], true],
+    ];
+  }
+
   /**
    * @since  1.3.2 added new testcase.
    * @since  1.3.1 removing dickhead spammer urls
@@ -81,6 +94,21 @@ class SpamHelperTest extends TestCase {
       'Spam email 4' => ['amerpropas1967@seocdvig.ru',  true],
       'Spam email 5' => ['timothy@yahoo.ru',            true],
     ];
+  }
+
+  /**
+   * @since  1.5.0
+   * @dataProvider dataprovider__is_spam
+   * @covers SpamHelper::is_spam
+   * @group  helpers
+   * @group  unit
+   * @small
+   * @param  array $input
+   * @param  mixed  $expected
+   * @return void
+   */
+  public function test_is_spam(array $input, $expected) {
+    $this->assertEquals($expected, SpamHelper::is_spam($input));
   }
 
   /**

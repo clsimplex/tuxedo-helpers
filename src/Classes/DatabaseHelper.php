@@ -7,6 +7,9 @@ use Symfony\Component\Process\Process;
 use CLSimplex\Tuxedo\Helpers\StorageHelper;
 
 /**
+ * Due to use of config(), this requires a laravel project.
+ *
+ * @TODO   maybe pass config values directly to remove implicit laravel dependencies?
  * @author Levon Zadravec-Powell levon@clsimplex.com
  * @since  1.5.0 moved into Helpers from Operations
  * @codeCoverageIgnore

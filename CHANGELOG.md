@@ -11,6 +11,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ### Added
 - DatabaseHelper added from operations package.
 - SpamHelper::is_spam(). Checks all fields for spam score now.
+- SpamHelper::has_url().
 
 ### Changed
 - SpamHelper revamp.
@@ -134,4 +135,3 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 [0.0.3]: https://github.com/clsimplex/tuxedo-helpers/compare/0.0.2...0.0.3
 [0.0.2]: https://github.com/clsimplex/tuxedo-helpers/compare/0.0.1...0.0.2
 [0.0.1]: https://github.com/clsimplex/tuxedo-helpers/releases/0.0.1
-

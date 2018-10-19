@@ -19,9 +19,6 @@ class SpamHelper {
    * @return bool
    */
   public static function is_spam(array $input) {
-    // Grab each field
-    // check spam score for each field
-    // calculate is_spam()
     $score = 0;
 
     foreach($input as $field => $value) {
@@ -33,7 +30,7 @@ class SpamHelper {
 
   /**
    * @since  1.5.0
-   * @param  string $field
+   * @param  string $field currently unused.
    * @param  mixed  $value
    * @return int
    */

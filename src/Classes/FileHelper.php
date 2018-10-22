@@ -118,7 +118,9 @@ class FileHelper {
   }
 
   /**
+   * @since  1.5.2 $result keys are sorted alphabetically.
    * @since  1.4.0
+   * @link   https://secure.php.net/manual/en/function.ksort.php
    * @link   https://secure.php.net/manual/en/function.strripos.php
    * @link   https://laravel.com/docs/5.4/helpers#method-class-basename
    * @param  string $directory_path
@@ -139,6 +141,8 @@ class FileHelper {
 
       $results[class_basename($class_path)] = $class_path;
     }
+
+    ksort($results);
 
     return $results;
   }

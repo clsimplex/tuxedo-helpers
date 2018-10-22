@@ -6,7 +6,15 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [1.5.2] - 2018-10-22
+
+### Changed
+- FileHelper::get_directory__classpaths() key value pairings are now sorted alphabetically (sorted by key.)
+- The 1.5.1 documentation now uses a "Changed" header versus simply displaying the change as a bullet point.
+
 ## [1.5.1] - 2018-10-19
+
+### Changed
 - SpamHelper::has_url() returns a failing score for SpamHelper::is_spam().
 
 ## [1.5.0] - 2018-10-19
@@ -127,7 +135,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [0.0.1] - 2018-01-17
 
-[Unreleased]: https://github.com/clsimplex/tuxedo-helpers/compare/1.5.1...develop
+[Unreleased]: https://github.com/clsimplex/tuxedo-helpers/compare/1.5.2...develop
+[1.5.2]: https://github.com/clsimplex/tuxedo-helpers/compare/1.5.1...1.5.2
 [1.5.1]: https://github.com/clsimplex/tuxedo-helpers/compare/1.5.0...1.5.1
 [1.5.0]: https://github.com/clsimplex/tuxedo-helpers/compare/1.4.2...1.5.0
 [1.4.2]: https://github.com/clsimplex/tuxedo-helpers/compare/1.3.2...1.4.2

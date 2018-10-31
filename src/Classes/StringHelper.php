@@ -4,9 +4,24 @@ namespace CLSimplex\Tuxedo\Helpers;
 
 /**
  * @author Levon Zadravec-Powell levon@clsimplex.com
+ * @since  1.6.0 added is_bad_password
  * @since  0.0.1
  */
 class StringHelper {
+
+  /**
+   * @since  1.6.0
+   * @author Levon Zadravec-Powell levon@clsimplex.com
+   * @link   https://secure.php.net/manual/en/function.file.php
+   * @link   https://stackoverflow.com/a/6159705
+   * @param  string $password_attempt
+   * @return bool
+   */
+  public static function is_bad_password(string $password_attempt) {
+    $bad_passwords = file(dirname(__DIR__) . '/Resources/bad_passwords.txt', FILE_IGNORE_NEW_LINES);
+
+    return in_array($password_attempt, $bad_passwords);
+  }
 
   /**
    * @since  0.0.1
@@ -21,11 +36,9 @@ class StringHelper {
    * This takes a string and gives us a slug.
    * More than simply formatting, it also removes
    * common words that aren't useful anyways.
-   *
    * This depends on the Laravel str_slug() function.
    * Note - if you want an 'exact' phrase, use Laravel's
    * str_slug() method.
-   *
    * 'battle-of-the-bands' shouldn't be an issue if 'of' + 'the'
    * get removed. You talk about about this topic on your page, right?
    *
@@ -41,9 +54,9 @@ class StringHelper {
     ];
 
     // Case insensitive replacement.
-    $result = str_ireplace( $remove_these, ' ', $string );
+    $result = str_ireplace($remove_these, ' ', $string);
 
-    return static::bleach_string(str_slug( $result ));
+    return static::bleach_string(str_slug($result));
   }
 
   /**

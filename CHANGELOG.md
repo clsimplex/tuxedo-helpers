@@ -6,6 +6,13 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+### Added
+- TestHelper and it's methods.
+- StringHelper::is_bad_password(). Useful tool for preventing initially terrible passwords.
+
+### Changed
+- Location of bad_strings.json has been moved from /tests to /Resources.
+
 ## [1.5.2] - 2018-10-22
 
 ### Changed

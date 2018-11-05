@@ -13,6 +13,7 @@ use PHPUnit\Framework\TestCase;
  * which explodes when trying to use here.
  *
  * @author Levon Zadravec-Powell levon@clsimplex.com
+ * @since  1.6.0 updated bad_strings.json filepath.
  * @since  0.0.1
  */
 class StringHelperTest extends TestCase {
@@ -99,12 +100,13 @@ class StringHelperTest extends TestCase {
    * dataprovider pattern.
    * Final item in array is expected value.
    *
+   * @since  1.6.0 updated bad_strings.json filepath.
    * @since  0.0.1
    * @see    StringHelperTest::bleach_string
    * @return array
    */
   public function dataprovider__bleach_string() {
-    $bad_string_array = json_decode(file_get_contents((dirname(__DIR__) . '/bad_strings.json')), true);
+    $bad_string_array = json_decode(file_get_contents((dirname(dirname(__DIR__)) . '/src/Resources/bad_strings.json')), true);
 
     return [$bad_string_array];
   }

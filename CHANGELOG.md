@@ -6,8 +6,10 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [1.6.0] - 2018-11-05
+
 ### Added
-- TestHelper and it's methods.
+- TestHelper and it's methods. TestHelper might not stick around. We'll see.
 - StringHelper::is_bad_password(). Useful tool for preventing initially terrible passwords.
 
 ### Changed

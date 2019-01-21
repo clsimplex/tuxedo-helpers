@@ -17,4 +17,4 @@ Tuxedo Helpers is a collection of simple helpers functions.
 
 `./vendor/bin/phpunit`
 
-`./vendor/bin/phpmetrics --report-html=phpmetrics .`
+`./vendor/bin/phpmetrics --report-html=phpmetrics --exclude=Migrations,resources,vendor,tests,node_modules,cache .`

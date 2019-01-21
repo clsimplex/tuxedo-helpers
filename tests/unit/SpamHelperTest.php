@@ -18,12 +18,31 @@ class SpamHelperTest extends TestCase {
     return [
       'empty fields'    => [['name' => '', 'message' => ''], ['name', 'message'], false], // ideally these never get submitted.
       'empty whitelist' => [['name' => '', 'message' => ''], [], false], // ideally the whitelist isn't messed up
+
       'real example 1'  => [[
         'name'    => 'RonnieRuine',
         'email'   => 'jamessnowden@yahoo.com',
         'subject' => 'Dating Hot Girls in your city',
-        'message' => 'Find yourself a girl for an evening for sex in your city: https://hugeurl.com/hotgirls86332'
+        'message' => 'Find yourself a girl for an evening for sex in your city: https://xxxxxxx.com/hotgirls86332'
       ], ['name', 'email', 'subject', 'message'], true],
+
+      'real example 2'  => [[
+        'name'    => 'Emmettjix',
+        'email'   => 'jonathanrainey14@gmail.com',
+        'message' => 'Hot women for good sex every day: http://xxx.xx/bestadultdating17848',
+      ], ['name', 'email', 'message'], true],
+
+      'real example 3'  => [[
+        'name'    => 'Matthewrix',
+        'email'   => 'maxymiv@ua.fm',
+        'message' => 'J\'ai 23 000 в‚¬. Comment l\'utiliser au mieux pour gagner plus d\'argent: http://xxx.io/bestinvestsystem13578',
+      ], ['name', 'email', 'message'], true],
+
+      'real example 4'  => [[
+        'name'    => 'Joshuaamets',
+        'email'   => 'denis47450@love.fr',
+        'message' => 'Top cryptocurrencies to invest in 2019: http://wntdco.mx/5500094910',
+      ], ['name', 'email', 'message'], true],
     ];
   }
 
@@ -42,9 +61,10 @@ class SpamHelperTest extends TestCase {
       'Spam string 1' => ['<a href=http://www.xxxxx.com/js/cache.asp?str=160-Getropin-Price-Buy-Hygetropin-China-Riptropin-Results>Getropin Price</a> Examine',    12.625],
       'Spam string 2' => ['<a href=http://www.xxxxx.il/care/system.asp?z=354-Cheap-Uk-Viagra-For-Sale-Buy-Levitra-Uk-Cheap-Lovegra-Uk>Cheap Uk Viagra For Sale</a', 5.5],
       'Spam 3'        => ['Invest $ 1,000 to earn $ 700,000 by the end of 2018. Only 100% of ICO insider information: http://top-5-ico.ml/?p=35156', 4.5],
-      //'Spam 4'        => ['#1 Online РЎasino: http://xx-xx.ru/xx/url=https://xx.cc/xxxxxx', 1], // To implement later.
-      // 'Spam 5' => ['How To Make Money $200 Per Day (Payment Proof): http://shop.bsigroup.com/AffiliateRedirect.aspx?url=https://vk.cc/8pBiII'],
-      // 'Spam 6' => ['Hello Downloads music club Dj's, mp3 private server. http://0daymusic.org/premium.php Best Regards, Robert'],
+      'Spam 4'        => ['#1 Online РЎasino: http://xx-xx.ru/xx/url=https://xx.cc/xxxxxx', 0], // To implement later.
+      'Spam 5' => ['How To Make Money $200 Per Day (Payment Proof): http://shop.bsigroup.com/AffiliateRedirect.aspx?url=https://xx.cc/7pBiIJ', 0],
+      'Spam 6' => ['Hello Downloads music club Dj\'s, mp3 private server. http://0daymusic.org/premium.php Best Regards, Robert', 0],
+      'Spam 7' => ['J\'ai 23 000 в‚¬. Comment l\'utiliser au mieux pour gagner plus d\'argent: http://xxx.io/bestinvestsystem12579', 0.5],
     ];
   }
 

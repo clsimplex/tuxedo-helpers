@@ -166,7 +166,7 @@ class SpamHelper {
   /**
    * @author Levon Zadravec-Powell levon@clsimplex.com
    * @TODO   remove in 2.0.0
-   * @deprecated
+   * @deprecated 2.0.0
    * @since  1.5.0 deprecated
    * @since  1.1.0 updated email domain list.
    *               Blocking all russian email addresses.
@@ -198,7 +198,7 @@ class SpamHelper {
 
   /**
    * @TODO   remove in 2.0.0
-   * @deprecated
+   * @deprecated 2.0.0
    * @since  1.5.0 deprecated
    * @since  1.0.0
    * @param  string $email

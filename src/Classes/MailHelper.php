@@ -48,7 +48,7 @@ class MailHelper {
       return false;
     }
 
-    $hash_info = static::get_unsubscription_info( $email );
+    $hash_info = static::get_unsubscription_info($email);
 
     return $hash_info['email'] === $email && $hash_info['hash'] === $hash;
   }

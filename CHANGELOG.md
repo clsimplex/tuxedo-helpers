@@ -9,6 +9,9 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ### Added
 - New SpamHelper tests. Minor improvements.
 
+### Removed
+- TestHelper
+
 ## [1.6.0] - 2018-11-05
 
 ### Added

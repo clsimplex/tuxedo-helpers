@@ -27,7 +27,7 @@ class SpamHelper {
 
     foreach($input as $field => $value) {
       if (in_array($field, $whitelist)) {
-        $score += static::get_field_score($field, $value);
+        $score += static::get_field_score($value);
       }
     }
 
@@ -40,14 +40,14 @@ class SpamHelper {
    * single "words" that mixed numbers and letters are suspicious.
    *
    * @since  1.7.0  urls fail score is now added to total instead of being capped.
+   *                removed unused $field parameter
    * @since  1.5.1  urls automatically fail now.
    * @since  1.5.0
    * @author Levon Zadravec-Powell levon@clsimplex.com
-   * @param  string $field currently unused.
    * @param  mixed  $value
    * @return int
    */
-  public static function get_field_score(string $field, $value) {
+  public static function get_field_score($value) {
     if(empty($value)) {
       return 0;
     }

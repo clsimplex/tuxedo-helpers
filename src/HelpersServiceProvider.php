@@ -28,5 +28,4 @@ class HelpersServiceProvider extends ServiceProvider {
   public function register() {
 
   }
-
 }

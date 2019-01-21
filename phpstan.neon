@@ -1,0 +1,10 @@
+includes:
+  - ./vendor/phpstan/phpstan-phpunit/extension.neon
+parameters:
+  paths:
+    - src
+  level: 1
+  fileExtensions:
+    - php
+  customRulesetUsed: true
+  polluteScopeWithLoopInitialAssignments: true

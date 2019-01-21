@@ -35,8 +35,14 @@ class SpamHelper {
   }
 
   /**
+   * Containing URLs/HTML is suspicious.
+   * COntaining cryllic characters is suspicious.
+   * single "words" that mixed numbers and letters are suspicious.
+   *
+   * @since  1.7.0  urls fail score is now added to total instead of being capped.
    * @since  1.5.1  urls automatically fail now.
    * @since  1.5.0
+   * @author Levon Zadravec-Powell levon@clsimplex.com
    * @param  string $field currently unused.
    * @param  mixed  $value
    * @return int
@@ -46,21 +52,17 @@ class SpamHelper {
       return 0;
     }
 
-    if (static::has_url($value)) {
-      return static::SCORE_THRESHOLD;
-    }
-
     $score = 0;
-    // Containing URLs/HTML is suspicious
-    // COntaining cryllic characters is suspicious
-    // single "words" that mixed numbers and letters are suspicious
 
-    $score += static::get_keyword_score($value);
+    if (static::has_url($value)) {
+      $score += static::SCORE_THRESHOLD;
+    }
 
     if (static::has_html_tags($value)) {
       $score += 2; // Heavily $value!
     }
 
+    $score += static::get_keyword_score($value);
     $score += static::get_russian_word_count($value);
 
     return $score;
@@ -73,13 +75,14 @@ class SpamHelper {
   /**
    * # signs are delimiters for the regex pattern.
    *
+   * @since  1.7.0  added www.
    * @since  1.5.0
    * @link   https://stackoverflow.com/a/5968861
    * @param  string $value
    * @return bool
    */
   public static function has_url(string $value) {
-    return (bool)preg_match("#https?://.+#", $value);
+    return (bool)preg_match("#https?://.+#", $value) || stripos($value, 'www.') !== false;
   }
 
   /**
@@ -88,11 +91,11 @@ class SpamHelper {
    *
    * Keyword scores are currently between [0.125, 2.5]
    *
-   * @author Levon Zadravec-Powell levon@clsimplex.com
    * @since  1.5.0  updated.
    * @since  1.2.0  Updated word list and scores.
    * @since  1.1.0  Updated word list and scores.
    * @since  1.0.0
+   * @author Levon Zadravec-Powell levon@clsimplex.com
    * @param  string $message
    * @return int
    */

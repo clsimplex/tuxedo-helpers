@@ -3,11 +3,12 @@
 namespace CLSimplex\Tuxedo\Helpers;
 
 /**
- * @author Levon Zadravec-Powell levon@clsimplex.com
+ * @since  1.8.0 added site's own URL to keywords
  * @since  1.3.2 Minor updates.
  * @since  1.2.0 Updated get_keyword_score().
  * @since  1.1.0 updated get_keyword_score().
  * @since  1.0.0
+ * @author Levon Zadravec-Powell levon@clsimplex.com
  */
 class SpamHelper {
 
@@ -47,7 +48,7 @@ class SpamHelper {
    * @param  mixed  $value
    * @return int
    */
-  public static function get_field_score($value) {
+  public static function get_field_score($value): int {
     if(empty($value)) {
       return 0;
     }
@@ -68,7 +69,11 @@ class SpamHelper {
     return $score;
   }
 
-  public static function has_html_tags(string $message) {
+  /**
+   * @param  string $message
+   * @return bool
+   */
+  public static function has_html_tags(string $message): bool {
     return strip_tags($message) !== $message;
   }
 
@@ -81,8 +86,8 @@ class SpamHelper {
    * @param  string $value
    * @return bool
    */
-  public static function has_url(string $value) {
-    return (bool)preg_match("#https?://.+#", $value) || stripos($value, 'www.') !== false;
+  public static function has_url(string $value): bool {
+    return (bool)preg_match("#https?://#", $value) || stripos($value, 'www.') !== false;
   }
 
   /**
@@ -99,7 +104,7 @@ class SpamHelper {
    * @param  string $message
    * @return int
    */
-  public static function get_keyword_score(string $message) {
+  public static function get_keyword_score(string $message): int {
     $score = 0;
 
     $keywords = [
@@ -129,6 +134,13 @@ class SpamHelper {
       'tamoxifen'  => 2.5,
     ];
 
+    /*
+     * A lot of spam contains the site url.
+     */
+    if(! is_null(config('app.url'))) {
+      $keywords[config('app.url')] = 1.5;
+    }
+
     $message = strtolower($message);
 
     foreach ($keywords as $word => $word_score) {
@@ -147,7 +159,7 @@ class SpamHelper {
    * @param  string $message
    * @return int
    */
-  public static function get_russian_word_count(string $message) {
+  public static function get_russian_word_count(string $message): int {
     if(empty($message)) {
       return 0;
     }
@@ -162,6 +174,8 @@ class SpamHelper {
 
     return count($result[0]);
   }
+
+  // Deprecated functions
 
   /**
    * @author Levon Zadravec-Powell levon@clsimplex.com

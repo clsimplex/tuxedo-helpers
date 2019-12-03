@@ -12,8 +12,8 @@ use Illuminate\Support\Facades\Log;
  * I also introduce a couple of undocumented changes here -
  * like unifying the function names: list_directory -> get_directory
  *
- * @author Levon Zadravec-Powell levon@clsimplex.com
  * @since  1.4.0 moved from Monocle/Helpers/FileHelper
+ * @author Levon Zadravec-Powell levon@clsimplex.com
  */
 class FileHelper {
 
@@ -25,7 +25,6 @@ class FileHelper {
    * really suggests that throwing an exception is the best fall through case.
    *
    * @since  1.4.0
-   * @codeCoverageIgnore
    * @param  string $view_name
    * @param  string $local_view_path
    * @param  array  $custom_data
@@ -39,38 +38,6 @@ class FileHelper {
     }
 
     return view($full_path, $custom_data);
-  }
-
-  /**
-   * This gives you the resource path for a PACKAGE.
-   * Reveiw this.
-   *
-   * @since  1.4.0
-   * @TODO   remove in 2.0.0
-   * @TODO   likely deprecate this.
-   * @deprecated
-   * @TODO   write tests.
-   * @TODO   make package flexible
-   * @TODO   currently unused - I think
-   * @param  string $file_name
-   * @return string
-   */
-  public static function get_resource_path(string $file_name = '') {
-    $resource_base_path = dirname(__DIR__) . '/resources';
-
-    if (empty($file_name)) {
-      return $resource_base_path;
-    }
-
-    if (! starts_with($file_name, '/')) {
-      $file_name = '/' . $file_name;
-    }
-
-    if (env('APP_ENV') === 'testing') {
-      $resource_base_path = str_replace('tuxedo-monocle/resources', 'tuxedo-monocle/src/resources', $resource_base_path);
-    }
-
-    return $resource_base_path . $file_name;
   }
 
   /**
@@ -209,6 +176,34 @@ class FileHelper {
    */
   public static function get_public_view(string $slug, string $local_path, array $extra_data = []) {
     return static::get_view($slug, $local_path, $extra_data);
+  }
+
+  /**
+   * This gives you the resource path for a PACKAGE.
+   * Reveiw this.
+   *
+   * @TODO   remove in 2.0.0
+   * @deprecated
+   * @since  1.4.0
+   * @param  string $file_name
+   * @return string
+   */
+  public static function get_resource_path(string $file_name = '') {
+    $resource_base_path = dirname(__DIR__) . '/resources';
+
+    if (empty($file_name)) {
+      return $resource_base_path;
+    }
+
+    if (! starts_with($file_name, '/')) {
+      $file_name = '/' . $file_name;
+    }
+
+    if (env('APP_ENV') === 'testing') {
+      $resource_base_path = str_replace('tuxedo-monocle/resources', 'tuxedo-monocle/src/resources', $resource_base_path);
+    }
+
+    return $resource_base_path . $file_name;
   }
 
 }

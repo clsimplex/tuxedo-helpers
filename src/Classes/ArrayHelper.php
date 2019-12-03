@@ -5,13 +5,15 @@ namespace CLSimplex\Tuxedo\Helpers;
 /**
  * These are functions that help us manipulate arrays.
  *
- * @author Levon Zadravec-Powell levon@clsimplex.com
+ * @since  1.8.0 deprecated array_cycle
+ *               cycle added
+ *               added return typing
  * @since  1.3.2 fixed class overwrite issue with get_attribute_string
  * @since  1.3.0 array_cycle()
  * @since  0.0.1
+ * @author Levon Zadravec-Powell levon@clsimplex.com
  */
 class ArrayHelper {
-
   /**
    * Creates a string of HTML attributes you can insert into a tag.
    * Uses key -> value pairings. key="value"
@@ -27,7 +29,7 @@ class ArrayHelper {
    * @param  array  $defaults
    * @return string
    */
-  public static function get_attribute_string(array $attributes, array $defaults = []) {
+  public static function get_attribute_string(array $attributes, array $defaults = []): string {
     $result = [];
 
     foreach ($defaults as $key => $value) {
@@ -65,7 +67,7 @@ class ArrayHelper {
    * @param  array $key_map
    * @return array
    */
-  public static function with_swapped_keys(array $original_array, array $key_map = []) {
+  public static function with_swapped_keys(array $original_array, array $key_map = []): array {
     $result = [];
 
     if (empty($key_map)) {
@@ -97,7 +99,7 @@ class ArrayHelper {
    * @param  array $key_map
    * @return array
    */
-  public static function only_swapped_keys(array $original_array, array $key_map = []) {
+  public static function only_swapped_keys(array $original_array, array $key_map = []): array {
     $result = [];
 
     if (empty($key_map)) {
@@ -126,9 +128,9 @@ class ArrayHelper {
    * @param  array $array
    * @return bool
    */
-  public static function custom_key_exists($keys, array $array = []) {
+  public static function custom_key_exists($keys, array $array = []): bool {
     if (empty($array)) {
-      return false;
+      return FALSE;
     }
 
     // Convert to array.
@@ -164,7 +166,7 @@ class ArrayHelper {
    * @param  array $array_two
    * @return array
    */
-  public static function array_difference(array $array_one, array $array_two) {
+  public static function array_difference(array $array_one, array $array_two): array {
     $intersection = array_intersect($array_one, $array_two);
     $result       = array_values(array_merge(array_diff($array_one, $intersection), array_diff($array_two, $intersection)));
 
@@ -177,15 +179,16 @@ class ArrayHelper {
    * Array cycle iterates through an array each time it is called,
    * moving the internal point back to the beginning if the end is reached.
    *
-   * @TODO   ArrayHelper::array_cycle -> ArrayHelper::cycle?
+   * @since  1.8.0 renamed array_cycle -> cycle
    * @since  1.3.0
+   * @author Levon Zadravec-Powell levon@clsimplex.com
    * @link   https://secure.php.net/manual/en/function.next.php
    * @link   https://secure.php.net/manual/en/function.reset.php
    * @link   https://secure.php.net/manual/en/function.key.php
-   * @param  $array reference
+   * @param  $array
    * @return mixed
    */
-  public static function array_cycle(array &$array) {
+  public static function cycle(array &$array) {
     if (empty($array)) { // Deals with empty array edge case: reset().
       return null;
     }
@@ -210,7 +213,7 @@ class ArrayHelper {
    * @param  array $array
    * @return array
    */
-  public static function get_unique(array $array) {
+  public static function get_unique(array $array): array {
     return array_values(array_unique($array, SORT_REGULAR));
   }
 
@@ -230,8 +233,25 @@ class ArrayHelper {
    * @param  array $array
    * @return array
    */
-  public static function remove_empty_strings(array $array) {
+  public static function remove_empty_strings(array $array): array {
     return array_filter(array_map('trim', $array), 'strlen');
+  }
+
+  // Deprecated functions
+
+  /**
+   * Array cycle iterates through an array each time it is called,
+   * moving the internal point back to the beginning if the end is reached.
+   *
+   * @TODO   remove in 2.0.0
+   * @deprecated 2.0.0
+   * @since  1.8.0 deprecated
+   * @since  1.3.0
+   * @param  $array
+   * @return mixed
+   */
+  public static function array_cycle(array &$array) {
+    return static::cycle($array);
   }
 
 }

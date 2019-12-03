@@ -11,15 +11,13 @@ use Illuminate\Support\Facades\Storage;
  * The Storage Facade is part of the laravel framework.
  * Nothing in here is testable outside of integration.
  *
- * @author Levon Zadravec-Powell levon@clsimplex.com
  * @since  0.1.0
- * @codeCoverageIgnore
+ * @author Levon Zadravec-Powell levon@clsimplex.com
  */
 class StorageHelper {
 
   /**
    * @since  0.1.0
-   * @codeCoverageIgnore
    * @param  string $file_name
    * @return bool
    */
@@ -29,7 +27,6 @@ class StorageHelper {
 
   /**
    * @since  0.1.0
-   * @codeCoverageIgnore
    * @param  string $file_name
    * @param  mixed  $contents
    * @return void
@@ -42,7 +39,6 @@ class StorageHelper {
    * Silent failure pattern.
    *
    * @since  0.1.0
-   * @codeCoverageIgnore
    * @param  string $file_name
    * @return void
    */
@@ -59,13 +55,12 @@ class StorageHelper {
    * file you just created.
    *
    * @since  0.1.0
-   * @codeCoverageIgnore
    * @param  string $file_name
    * @return string
    */
   public static function get_local_file(string $file_name) {
     if (! static::has_local_file($file_name)) {
-      Storage::disk('local')->put( $file_name, '' );
+      Storage::disk('local')->put($file_name, '');
     }
 
     return Storage::disk('local')->get($file_name);
@@ -73,7 +68,6 @@ class StorageHelper {
 
   /**
    * @since  0.1.0
-   * @codeCoverageIgnore
    * @param  string $file_name
    * @return string
    */

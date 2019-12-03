@@ -5,8 +5,8 @@ namespace CLSimplex\Tuxedo\Helpers;
 use Carbon\Carbon;
 
 /**
- * @author Levon Zadravec-Powell levon@clsimplex.com
  * @since  0.0.1
+ * @author Levon Zadravec-Powell levon@clsimplex.com
  */
 class TimeHelper {
 
@@ -17,11 +17,11 @@ class TimeHelper {
    * used to build it.
    *
    * @since  0.0.1
-   * @codeConverageIgnore
    * @return int
    */
   public static function end_of_day_minutes() {
     $carbon_now = Carbon::now();
+
     return $carbon_now->diffInMinutes($carbon_now->copy()->endOfDay());
   }
 
@@ -32,11 +32,11 @@ class TimeHelper {
    * used to build it.
    *
    * @since  0.0.1
-   * @codeConverageIgnore
    * @return int
    */
   public static function end_of_month_minutes() {
     $carbon_now = Carbon::now();
+
     return $carbon_now->diffInMinutes($carbon_now->copy()->endOfMonth());
   }
 
@@ -108,7 +108,7 @@ class TimeHelper {
    * @return string
    */
   public static function get_phase_of_current_day() {
-    return static::get_phase_of_day(Carbon::now());
+    return static::get_phase_of_day();
   }
 
   /**
@@ -122,10 +122,14 @@ class TimeHelper {
    * - Night
    *
    * @since  1.0.0 moved core logic from get_phase_of_current_day.
-   * @param  Carbon\Carbon $moment the moment in question
+   * @param  \Carbon\Carbon $moment the moment in question
    * @return string
    */
-  public static function get_phase_of_day(Carbon $moment) {
+  public static function get_phase_of_day(Carbon $moment = NULL) {
+    if(is_null($moment)) {
+      $moment = Carbon::now();
+    }
+
     $morning__end   = Carbon::create($moment->year, $moment->month, $moment->day, 12,  0, 0);
     $afternoon__end = Carbon::create($moment->year, $moment->month, $moment->day, 17,  0, 0);
     $evening__end   = Carbon::create($moment->year, $moment->month, $moment->day, 21,  0, 0);

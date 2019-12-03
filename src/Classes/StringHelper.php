@@ -3,9 +3,10 @@
 namespace CLSimplex\Tuxedo\Helpers;
 
 /**
- * @author Levon Zadravec-Powell levon@clsimplex.com
+ * @since  1.8.0 pennies_to_dollars
  * @since  1.6.0 added is_bad_password
  * @since  0.0.1
+ * @author Levon Zadravec-Powell levon@clsimplex.com
  */
 class StringHelper {
 
@@ -72,7 +73,7 @@ class StringHelper {
       return '';
     }
 
-    return trim(html_entity_decode(strip_tags($untrusted_string)));
+    return trim(htmlspecialchars($untrusted_string));
   }
 
   /**
@@ -126,6 +127,19 @@ class StringHelper {
     }
 
     return substr($slug, 0, $query_position);
+  }
+
+  /**
+   * Popular formatted string helper.
+   * This is used within BasePaymentModel and beyond.
+   *
+   * @since  1.8.0
+   * @author Levon Zadravec-Powell levon@clsimplex.com
+   * @param  int $pennies
+   * @return string
+   */
+  public static function pennies_to_dollars(int $pennies): string {
+    return money_format('%.2n', round($pennies / 100, 2));
   }
 
   /**
